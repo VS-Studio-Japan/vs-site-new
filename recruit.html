@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recruit | VS Studio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      padding: 22px 24px 12px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .content {
+      max-width: 760px;
+    }
+
+    .content h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .content p {
+      font-size: 9px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.9;
+      letter-spacing: 0.06em;
+      margin-bottom: 28px;
+    }
+
+    .back-link {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.65);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px 28px;
+      font-size: 8px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.14em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">VS STUDIO</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="recruit.html">RECRUIT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content">
+      <h1>Recruit</h1>
+      <p>
+        VS Studio is building a new development environment for the future.<br>
+        Recruitment information will be announced here when available.
+      </p>
+      <a class="back-link" href="index.html">BACK TO HOME</a>
+    </section>
+  </main>
+
+  <footer>
+    © VS Studio Inc.
+  </footer>
+</body>
+</html>
