@@ -3,27 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recruit | VS Studio</title>
+  <title>VS Studio | Official</title>
   <style>
-    /* 日本語版と同じデザイン */
+    /* 日本語版とCSSは共通 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
+    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
-    header { width: 100%; padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; }
+    header { width: 100%; padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; position: relative; }
     .header-left { display: flex; align-items: center; gap: 40px; }
     .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; }
     nav { display: flex; gap: 30px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
-    nav a { color: rgba(255,255,255,0.45); text-decoration: none; }
-    
-    .lang-switcher { display: flex; align-items: center; gap: 8px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 14px; color: #fff; text-decoration: none; transition: 0.3s; }
-    .lang-switcher:hover { background: rgba(255,255,255,0.1); }
+    nav a { color: #fff; text-decoration: none; opacity: 0.85; }
+
+    .lang-dropdown { position: relative; cursor: pointer; }
+    .lang-button { display: flex; align-items: center; gap: 8px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 14px; color: #fff; transition: 0.3s; user-select: none; }
+    .lang-button:hover { background: rgba(255,255,255,0.1); }
     .icon-globe { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-    .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 0.3s; }
+
+    .dropdown-content { position: absolute; top: 110%; right: 0; background: #111; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 130px; overflow: hidden; display: none; z-index: 100; }
+    .dropdown-content a { color: #fff; padding: 12px 20px; text-decoration: none; display: block; font-size: 13px; transition: 0.2s; }
+    .dropdown-content a:hover { background: #222; }
+    
+    .lang-dropdown.active .dropdown-content { display: block; }
+    .lang-dropdown.active .icon-arrow { transform: rotate(180deg); }
 
     main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
     .coming-soon { font-size: 16px; font-weight: 700; color: #FF0000; letter-spacing: 0.1em; margin-bottom: 40px; }
-    .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.65); color: #fff; text-decoration: none; padding: 10px 24px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.2s ease; }
-    .back-link:hover { background: #fff; color: #000; }
+    .hero h1 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+    .hero p { font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; margin-bottom: 22px; }
+    .button, .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 8px 16px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; transition: 0.2s; }
+    .button:hover, .back-link:hover { background: #fff; color: #000; }
     footer { text-align: center; padding: 24px; font-size: 9px; color: rgba(255,255,255,0.35); }
   </style>
 </head>
@@ -31,15 +41,54 @@
   <header>
     <div class="header-left">
       <div class="logo">VS STUDIO</div>
-      <nav><a href="en.html">HOME</a><a href="en-recruit.html" style="color:#fff;">RECRUIT</a></nav>
+      <nav><a href="en.html">HOME</a><a href="en-recruit.html">RECRUIT</a></nav>
     </div>
-    <a href="recruit.html" class="lang-switcher">
-      <svg class="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span>Japanese</span>
-      <svg class="icon-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
+    <div class="lang-dropdown" id="langMenu">
+      <div class="lang-button">
+        <svg class="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>English</span>
+        <svg class="icon-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="dropdown-content">
+        <a href="#" id="toJapanese">Japanese</a>
+        <a href="#" onclick="location.reload()">English</a>
+      </div>
+    </div>
   </header>
-  <main><div><div class="coming-soon">This page will be released around June 2026.</div><a href="en.html" class="back-link">Back to Home</a></div></main>
+
+  <main>
+    <section class="hero" id="homeContent">
+      <h1>Welcome to VS Studio</h1>
+      <p>Official Website of VS Studio</p>
+      <a class="button" href="en-recruit.html">RECRUIT</a>
+    </section>
+    <div id="recruitContent" style="display:none;">
+      <div class="coming-soon">This page will be released around June 2026.</div>
+      <a href="en.html" class="back-link">Back to Home</a>
+    </div>
+  </main>
+
   <footer>© VS Studio Inc.</footer>
+
+  <script>
+    const langMenu = document.getElementById('langMenu');
+    const toJapanese = document.getElementById('toJapanese');
+    const path = window.location.pathname;
+
+    langMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => langMenu.classList.remove('active'));
+
+    if(path.includes('recruit')) {
+      document.getElementById('homeContent').style.display = 'none';
+      document.getElementById('recruitContent').style.display = 'block';
+      toJapanese.href = 'recruit.html';
+    } else {
+      toJapanese.href = 'index.html';
+    }
+  </script>
 </body>
 </html>
