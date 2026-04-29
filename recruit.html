@@ -8,10 +8,17 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
-    header { width: 100%; padding: 40px 24px 20px; text-align: center; }
-    .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; margin-bottom: 20px; }
-    nav { display: flex; justify-content: center; gap: 30px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
+    header { width: 100%; padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .header-left { display: flex; align-items: center; gap: 40px; }
+    .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; }
+    nav { display: flex; gap: 30px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
     nav a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    
+    .lang-switcher { display: flex; align-items: center; gap: 8px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 14px; color: #fff; text-decoration: none; transition: 0.3s; }
+    .lang-switcher:hover { background: rgba(255,255,255,0.1); }
+    .icon-globe { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
     main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
     .coming-soon { font-size: 16px; font-weight: 700; color: #FF0000; letter-spacing: 0.1em; margin-bottom: 40px; }
     .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.65); color: #fff; text-decoration: none; padding: 10px 24px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.2s ease; }
@@ -21,19 +28,17 @@
 </head>
 <body>
   <header>
-    <div class="logo">VS STUDIO</div>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="recruit.html" style="color:#fff;">RECRUIT</a>
-      <a href="en-recruit.html" style="opacity: 0.4; margin-left: 15px;">EN</a>
-    </nav>
-  </header>
-  <main>
-    <div>
-      <div class="coming-soon">このページは2026年6月頃公開されます。</div>
-      <a href="index.html" class="back-link">Back to Home</a>
+    <div class="header-left">
+      <div class="logo">VS STUDIO</div>
+      <nav><a href="index.html">HOME</a><a href="recruit.html" style="color:#fff;">RECRUIT</a></nav>
     </div>
-  </main>
+    <a href="en-recruit.html" class="lang-switcher">
+      <svg class="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span>English</span>
+      <svg class="icon-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </header>
+  <main><div><div class="coming-soon">このページは2026年6月頃公開されます。</div><a href="index.html" class="back-link">Back to Home</a></div></main>
   <footer>© VS Studio Inc.</footer>
 </body>
 </html>
