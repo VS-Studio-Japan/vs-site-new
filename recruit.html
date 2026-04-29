@@ -6,38 +6,46 @@
   <title>VS Studio</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; }
+    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
-    header { width: 100%; padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; position: relative; }
-    .header-left { display: flex; align-items: center; gap: 40px; }
-    .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; }
-    nav { display: flex; gap: 30px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
+    
+    /* ヘッダー：スマホでは縦並び、PCでは横並び */
+    header { width: 100%; padding: 40px 24px 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
+    
+    .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
+    nav { display: flex; gap: 25px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
     nav a { color: #fff; text-decoration: none; opacity: 0.85; }
 
-    /* プルダウンメニューの親要素 */
-    .lang-dropdown { position: relative; cursor: pointer; }
-    
-    .lang-button { display: flex; align-items: center; gap: 8px; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 14px; color: #fff; transition: 0.3s; user-select: none; }
-    .lang-button:hover { background: rgba(255,255,255,0.1); }
-    .icon-globe { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-    .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 0.3s; }
-
-    /* メニュー本体 */
-    .dropdown-content { position: absolute; top: 110%; right: 0; background: #111; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 130px; overflow: hidden; display: none; z-index: 100; }
-    .dropdown-content a { color: #fff; padding: 12px 20px; text-decoration: none; display: block; font-size: 13px; transition: 0.2s; }
-    .dropdown-content a:hover { background: #222; }
-    
-    /* 表示時のクラス */
+    /* 言語プルダウン：スマホでも中央に配置 */
+    .lang-dropdown { position: relative; cursor: pointer; margin-top: 10px; }
+    .lang-button { display: flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 13px; color: #fff; user-select: none; }
+    .icon-globe { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: 0.3s; }
+    .dropdown-content { position: absolute; top: 110%; left: 50%; transform: translateX(-50%); background: #111; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 130px; display: none; z-index: 100; }
+    .dropdown-content a { color: #fff; padding: 12px 20px; text-decoration: none; display: block; font-size: 13px; text-align: center; }
     .lang-dropdown.active .dropdown-content { display: block; }
-    .lang-dropdown.active .icon-arrow { transform: rotate(180deg); }
 
-    main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    /* PCモニターなど幅が広い場合のみ横並びにする */
+    @media (min-width: 768px) {
+      header { flex-direction: row; justify-content: space-between; padding: 40px 60px; }
+      .header-left { display: flex; align-items: center; gap: 50px; }
+      .lang-dropdown { margin-top: 0; }
+      .dropdown-content { left: auto; right: 0; transform: none; }
+    }
+
+    /* スマホ用にロゴサイズを少しだけ調整（はみ出し防止） */
+    @media (max-width: 480px) {
+      .logo { font-size: 30px; }
+      nav { font-size: 14px; gap: 15px; }
+    }
+
+    main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; }
     .coming-soon { font-size: 16px; font-weight: 700; color: #FF0000; letter-spacing: 0.1em; margin-bottom: 40px; }
     .hero h1 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-    .hero p { font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; margin-bottom: 22px; }
-    .button, .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 8px 16px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; transition: 0.2s; }
+    .hero p { font-size: 10px; color: rgba(255,255,255,0.7); margin-bottom: 22px; }
+    .button, .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 10px 20px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.2s; }
     .button:hover, .back-link:hover { background: #fff; color: #000; }
-    footer { text-align: center; padding: 24px; font-size: 9px; color: rgba(255,255,255,0.35); }
+    footer { text-align: center; padding: 30px; font-size: 9px; color: rgba(255,255,255,0.35); }
   </style>
 </head>
 <body>
@@ -76,19 +84,12 @@
   <script>
     const langMenu = document.getElementById('langMenu');
     const toEnglish = document.getElementById('toEnglish');
-    const path = window.location.pathname;
+    const isRecruit = window.location.pathname.includes('recruit');
 
-    // クリックでメニュー開閉
-    langMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langMenu.classList.toggle('active');
-    });
-
-    // 画面外クリックで閉じる
+    langMenu.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('active'); });
     document.addEventListener('click', () => langMenu.classList.remove('active'));
 
-    // ページ判定と遷移設定
-    if(path.includes('recruit')) {
+    if(isRecruit) {
       document.getElementById('homeContent').style.display = 'none';
       document.getElementById('recruitContent').style.display = 'block';
       toEnglish.href = 'en-recruit.html';
