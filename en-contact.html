@@ -5,130 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VS Studio - CONTACT</title>
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
-      padding: 40px 20px;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
+    body { background-color: #000; color: #fff; font-family: sans-serif; padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
+    h1 { letter-spacing: 4px; font-weight: normal; margin-bottom: 40px; }
+    .form-group { margin-bottom: 30px; text-align: left; }
+    label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box; outline: none;
     }
-
-    h1 {
-      letter-spacing: 4px;
-      font-weight: normal;
-      margin-bottom: 40px;
+    .radio-group { margin-top: 10px; }
+    .radio-item { margin-bottom: 12px; display: flex; align-items: center; }
+    .radio-item input { margin-right: 12px; cursor: pointer; }
+    .radio-item label { display: inline; margin-bottom: 0; font-weight: normal; cursor: pointer; }
+    button { 
+      width: 100%; padding: 15px; background-color: #fff; color: #000; border: none; 
+      font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
     }
-
-    .form-group {
-      margin-bottom: 30px;
-      text-align: left;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.9rem;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%;
-      padding: 12px;
-      background: #000;
-      border: 1px solid #333;
-      color: #fff;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    .radio-group {
-      margin-top: 10px;
-    }
-
-    .radio-item {
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-    }
-
-    .radio-item input {
-      margin-right: 12px;
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    .radio-item label {
-      display: inline;
-      margin-bottom: 0;
-      font-weight: normal;
-      cursor: pointer;
-    }
-
-    button {
-      width: 100%;
-      padding: 15px;
-      background-color: #fff;
-      color: #000;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-      letter-spacing: 2px;
-      margin-top: 20px;
-    }
-
-    button:hover {
-      background-color: #ccc;
-    }
+    button:hover { background-color: #ccc; }
+    #thanks_message { display: none; padding: 40px; border: 1px solid #333; margin-top: 50px; }
   </style>
 </head>
 <body>
 
-  <h1>CONTACT</h1>
-
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST">
-
-    <div class="form-group">
-      <label>Name *</label>
-      <input type="text" name="entry.1207021558" required>
-    </div>
-
-    <div class="form-group">
-      <label>Email Address *</label>
-      <input type="email" name="entry.1665471310" required>
-    </div>
-
-    <div class="form-group">
-      <label>Inquiry Type *</label>
-      <div class="radio-group">
-        <div class="radio-item">
-          <input type="radio" name="entry.267130849" value="採用に関するお問い合わせ" id="t1" required>
-          <label for="t1">Recruitment</label>
-        </div>
-
-        <div class="radio-item">
-          <input type="radio" name="entry.267130849" value="取材に関するお問い合わせ" id="t2">
-          <label for="t2">Media / Interview</label>
-        </div>
-
-        <div class="radio-item">
-          <input type="radio" name="entry.267130849" value="その他" id="t3">
-          <label for="t3">Other</label>
+  <div id="form_area">
+    <h1>CONTACT</h1>
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <div class="form-group">
+        <label>Name *</label>
+        <input type="text" name="entry.1207021558" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="entry.1665471310" required>
+      </div>
+      <div class="form-group">
+        <label>Inquiry Type *</label>
+        <div class="radio-group">
+          <div class="radio-item"><input type="radio" name="entry.267130849" value="採用に関するお問い合わせ" id="t1" required><label for="t1">Recruitment</label></div>
+          <div class="radio-item"><input type="radio" name="entry.267130849" value="取材に関するお問い合わせ" id="t2"><label for="t2">Media / Interview</label></div>
+          <div class="radio-item"><input type="radio" name="entry.267130849" value="その他" id="t3"><label for="t3">Other</label></div>
         </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea name="entry.1989028886" rows="5" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 
-    <div class="form-group">
-      <label>Message (Please provide specific details) *</label>
-      <textarea name="entry.1661004559" rows="5" required></textarea>
-    </div>
+  <div id="thanks_message">
+    <h1>THANK YOU</h1>
+    <p>Your inquiry has been submitted successfully.</p>
+    <button onclick="window.location.href='index.html';" style="width: auto; padding: 10px 40px;">HOME</button>
+  </div>
 
-    <button type="submit">Send Message</button>
-
-  </form>
+  <script type="text/javascript">var submitted = false;</script>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('form_area').style.display='none'; document.getElementById('thanks_message').style.display='block';}"></iframe>
 
 </body>
 </html>
