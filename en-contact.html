@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CONTACT | VS Studio</title>
   <style>
-    /* Styles same as en.html */
+    /* スタイル共通 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; }
+    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
     header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
     .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
@@ -25,11 +25,12 @@
       nav { font-size: 16px; gap: 30px; }
       .dropdown-content { left: auto; right: 0; transform: none; }
     }
-    
-    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; }
-    h2 { font-size: 20px; letter-spacing: 0.2em; margin-bottom: 40px; text-transform: uppercase; }
-    iframe { border: none; width: 100%; max-width: 640px; height: 800px; background: transparent; }
-    footer { text-align: center; padding: 30px; font-size: 9px; color: rgba(255,255,255,0.35); }
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
+    h1 { font-size: 20px; letter-spacing: 0.25em; margin-bottom: 40px; text-transform: uppercase; }
+    /* フォームの埋め込みエリア */
+    .iframe-container { width: 100%; max-width: 640px; height: 1000px; }
+    iframe { width: 100%; height: 100%; border: none; }
+    footer { text-align: center; padding: 40px; font-size: 10px; color: rgba(255,255,255,0.3); }
   </style>
 </head>
 <body>
@@ -54,8 +55,10 @@
     </div>
   </header>
   <main>
-    <h2>Contact</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe-0P7A7-P1-vL1z-m_7f9_1_g_1_g_1_g/viewform?embedded=true">Loading…</iframe>
+    <h1>CONTACT</h1>
+    <div class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/viewform?embedded=true">Loading…</iframe>
+    </div>
   </main>
   <footer>© VS Studio Inc.</footer>
   <script>
