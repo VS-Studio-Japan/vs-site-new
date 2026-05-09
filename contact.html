@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VS Studio お問い合わせ</title>
     <style>
-        /* 黒背景・白文字のデザインを維持 */
         body { background-color: #000; color: #fff; font-family: sans-serif; padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
         h1 { letter-spacing: 4px; font-weight: normal; margin-bottom: 40px; }
         .form-group { margin-bottom: 30px; text-align: left; }
@@ -22,41 +21,56 @@
             font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
         }
         button:hover { background-color: #ccc; }
+
+        /* 送信完了後のメッセージ用スタイル */
+        #thanks_message { display: none; padding: 40px; border: 1px solid #333; }
     </style>
 </head>
 <body>
 
-    <h1>CONTACT</h1>
+    <div id="form_area">
+        <h1>CONTACT</h1>
+        
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
 
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST">
-
-        <div class="form-group">
-            <label for="name">お名前 *</label>
-            <input type="text" id="name" name="entry.2120017129" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">メールアドレス *</label>
-            <input type="email" id="email" name="entry.176435036" required>
-        </div>
-
-        <div class="form-group">
-            <label>お問い合わせ種別 *</label>
-            <div class="radio-group">
-                <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
-                <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
-                <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
+            <div class="form-group">
+                <label for="name">お名前 *</label>
+                <input type="text" id="name" name="entry.2120017129" required>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
-            <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
-        </div>
+            <div class="form-group">
+                <label for="email">メールアドレス *</label>
+                <input type="email" id="email" name="entry.176435036" required>
+            </div>
 
-        <button type="submit">Send Message</button>
+            <div class="form-group">
+                <label>お問い合わせ種別 *</label>
+                <div class="radio-group">
+                    <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
+                    <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
+                    <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
+                </div>
+            </div>
 
-    </form>
+            <div class="form-group">
+                <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
+                <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <div id="thanks_message">
+        <h2>THANK YOU</h2>
+        <p>お問い合わせを受け付けました。</p>
+        <button onclick="location.reload();" style="width: auto;">戻る</button>
+    </div>
+
+    <script type="text/javascript">
+        var submitted = false;
+    </script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('form_area').style.display='none'; document.getElementById('thanks_message').style.display='block';}"></iframe>
 
 </body>
 </html>
