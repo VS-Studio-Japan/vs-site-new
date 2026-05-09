@@ -12,7 +12,6 @@
         input[type="text"], input[type="email"], textarea {
             width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box; outline: none;
         }
-        input:focus, textarea:focus { border-color: #fff; }
         .radio-group { margin-top: 10px; }
         .radio-item { margin-bottom: 12px; display: flex; align-items: center; }
         .radio-item input { margin-right: 12px; cursor: pointer; }
@@ -28,7 +27,7 @@
 
     <h1>CONTACT</h1>
 
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" id="contact-form">
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST">
 
         <div class="form-group">
             <label for="name">お名前 *</label>
@@ -57,15 +56,6 @@
         <button type="submit">Send Message</button>
 
     </form>
-
-    <script>
-        // 送信ボタンを押した数秒後に、強制的にHOMEへ移動させる（Googleの白い画面を見せない対策）
-        document.getElementById('contact-form').onsubmit = function() {
-            setTimeout(function() {
-                window.location.href = 'index.html'; 
-            }, 1000); // 1秒後に移動（この間に送信を完了させる）
-        };
-    </script>
 
 </body>
 </html>
