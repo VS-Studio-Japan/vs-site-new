@@ -1,89 +1,71 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CONTACT | VS Studio</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; }
-    body { display: flex; flex-direction: column; min-height: 100vh; }
-    header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
-    nav { display: flex; gap: 15px; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; }
-    nav a { color: #fff; text-decoration: none; opacity: 0.45; }
-    nav a.active { opacity: 1; }
-    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
-    .form-container { width: 100%; max-width: 550px; }
-    h1 { font-size: 20px; letter-spacing: 0.25em; margin-bottom: 40px; text-align: center; }
-    form { display: flex; flex-direction: column; gap: 25px; }
-    .input-group { display: flex; flex-direction: column; gap: 10px; }
-    label { font-size: 12px; color: rgba(255,255,255,0.7); }
-    input, textarea { background: transparent; border: 1px solid rgba(255,255,255,0.3); padding: 14px; color: #fff; font-size: 15px; }
-    .radio-group { display: flex; flex-direction: column; gap: 12px; }
-    .radio-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
-    button { background: #fff; color: #000; border: none; padding: 18px; font-size: 13px; letter-spacing: 0.2em; cursor: pointer; font-weight: bold; }
-    #success-message { display: none; text-align: center; padding: 40px; border: 1px solid #fff; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Studio お問い合わせ</title>
+    <style>
+        /* 画像 image_814518.jpg の黒背景デザインに準拠 */
+        body { background-color: #000; color: #fff; font-family: sans-serif; padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
+        h1 { letter-spacing: 4px; font-weight: normal; margin-bottom: 40px; }
+        .form-group { margin-bottom: 30px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box;
+        }
+        .radio-group { margin-top: 10px; }
+        .radio-item { margin-bottom: 8px; display: flex; align-items: center; }
+        .radio-item input { margin-right: 10px; }
+        .radio-item label { display: inline; margin-bottom: 0; font-weight: normal; }
+        button { 
+            width: 100%; padding: 15px; background-color: #fff; color: #000; border: none; 
+            font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
+        }
+        button:hover { background-color: #ccc; }
+    </style>
 </head>
 <body>
-  <script type="text/javascript">let submitted = false;</script>
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('contact-form').style.display='none'; document.getElementById('success-message').style.display='block';}"></iframe>
 
-  <header>
-    <div class="logo">VS STUDIO</div>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="recruit.html">RECRUIT</a>
-      <a href="contact.html" class="active">CONTACT</a>
-    </nav>
-  </header>
+    <h1>CONTACT</h1>
 
-  <main>
-    <div class="form-container">
-      <h1>CONTACT</h1>
-      <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeL7DbeZ0GZ2i_4UqX9t9h-B3Yp_6nSIs2zB1-jVl06C3K8wQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-        
-        <div class="input-group">
-          <label>お名前 *</label>
-          <input type="text" name="entry.1809071060" required>
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST">
+
+        <div class="form-group">
+            <label for="name">お名前 *</label>
+            <input type="text" id="name" name="entry.2120017129" required>
         </div>
 
-        <div class="input-group">
-          <label>メールアドレス *</label>
-          <input type="email" name="entry.1017417535" required>
+        <div class="form-group">
+            <label for="email">メールアドレス *</label>
+            <input type="email" id="email" name="entry.176435036" required>
         </div>
 
-        <div class="input-group">
-          <label>お問い合わせ種別 *</label>
-          <div class="radio-group">
-            <label class="radio-item"><input type="radio" name="entry.156549298" value="採用に関するお問い合わせ" required> 採用に関するお問い合わせ</label>
-            <label class="radio-item"><input type="radio" name="entry.156549298" value="取材に関するお問い合わせ"> 取材に関するお問い合わせ</label>
-            <label class="radio-item"><input type="radio" name="entry.156549298" value="その他"> その他</label>
-          </div>
+        <div class="form-group">
+            <label for="type">お問い合わせ種別 *</label>
+            <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
+            </div>
         </div>
 
-        <div class="input-group">
-          <label>お問い合わせ内容 *</label>
-          <textarea name="entry.134599981" rows="6" required></textarea>
+        <div class="form-group">
+            <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
+            <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
         </div>
 
-        <div class="input-group">
-          <label>ご希望の返信方法</label>
-          <div class="radio-group">
-            <label class="radio-item"><input type="radio" name="entry.1118128362" value="メール"> メール</label>
-            <label class="radio-item"><input type="radio" name="entry.1118128362" value="電話"> 電話</label>
-            <label class="radio-item"><input type="radio" name="entry.1118128362" value="どちらでも可"> どちらでも可</label>
-          </div>
+        <div class="form-group">
+            <label>ご希望の返信方法</label>
+            <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="entry.1778134371" value="メール" id="res1" required><label for="res1">メール</label></div>
+                <div class="radio-item"><input type="radio" name="entry.1778134371" value="電話" id="res2"><label for="res2">電話</label></div>
+                <div class="radio-item"><input type="radio" name="entry.1778134371" value="どちらでも可" id="res3"><label for="res3">どちらでも可</label></div>
+            </div>
         </div>
 
         <button type="submit">Send Message</button>
-      </form>
 
-      <div id="success-message">
-        <p>お問い合わせありがとうございます。<br>内容を確認の上、担当者よりご連絡いたします。</p>
-      </div>
-    </div>
-  </main>
+    </form>
+
 </body>
 </html>
