@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VS Studio | Official</title>
   <style>
+    /* デザインは共通 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
+    html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: "Helvetica Neue", Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
     header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
     .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
@@ -34,14 +35,14 @@
     <div class="header-left">
       <div class="logo">VS STUDIO</div>
       <nav>
-        <a href="en.html">HOME</a>
-        <a href="en-recruit.html">RECRUIT</a>
-        <a href="en-contact.html">CONTACT</a>
+        <a href="index.html">HOME</a>
+        <a href="recruit.html">RECRUIT</a>
+        <a href="contact.html">CONTACT</a>
       </nav>
     </div>
     <div class="lang-dropdown" id="langMenu">
       <div class="lang-button">
-        <span>English</span>
+        <span>Japanese</span>
       </div>
       <div class="dropdown-content">
         <a href="index.html">Japanese</a>
@@ -52,13 +53,16 @@
   <main>
     <section class="hero">
       <h1>Welcome to VS Studio</h1>
-      <a class="button" href="en-recruit.html">RECRUIT</a>
+      <a class="button" href="recruit.html">採用情報</a>
     </section>
   </main>
   <footer>© VS Studio Inc.</footer>
   <script>
     const langMenu = document.getElementById('langMenu');
-    langMenu.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('active'); });
+    langMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('active');
+    });
     document.addEventListener('click', () => langMenu.classList.remove('active'));
   </script>
 </body>
