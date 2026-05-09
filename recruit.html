@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VS Studio</title>
+  <title>Recruit | VS Studio</title>
   <style>
+    /* index.htmlと共通のスタイル */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
-    
-    /* ヘッダー：スマホでは縦並び、PCでは横並び */
-    header { width: 100%; padding: 40px 24px 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
-    
-    .logo { font-size: 39px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
-    nav { display: flex; gap: 25px; font-size: 16px; letter-spacing: 0.2em; text-transform: uppercase; }
-    nav a { color: #fff; text-decoration: none; opacity: 0.85; }
-
-    /* 言語プルダウン：スマホでも中央に配置 */
-    .lang-dropdown { position: relative; cursor: pointer; margin-top: 10px; }
+    header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
+    .logo { font-size: 30px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
+    nav { display: flex; gap: 15px; font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase; }
+    nav a { color: #fff; text-decoration: none; opacity: 0.45; }
+    .lang-dropdown { position: relative; cursor: pointer; }
     .lang-button { display: flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(255,255,255,0.7); border-radius: 25px; font-size: 13px; color: #fff; user-select: none; }
     .icon-globe { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; }
     .icon-arrow { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; transition: 0.3s; }
@@ -25,26 +21,18 @@
     .dropdown-content a { color: #fff; padding: 12px 20px; text-decoration: none; display: block; font-size: 13px; text-align: center; }
     .lang-dropdown.active .dropdown-content { display: block; }
 
-    /* PCモニターなど幅が広い場合のみ横並びにする */
     @media (min-width: 768px) {
       header { flex-direction: row; justify-content: space-between; padding: 40px 60px; }
       .header-left { display: flex; align-items: center; gap: 50px; }
-      .lang-dropdown { margin-top: 0; }
+      .logo { font-size: 39px; }
+      nav { font-size: 16px; gap: 30px; }
       .dropdown-content { left: auto; right: 0; transform: none; }
-    }
-
-    /* スマホ用にロゴサイズを少しだけ調整（はみ出し防止） */
-    @media (max-width: 480px) {
-      .logo { font-size: 30px; }
-      nav { font-size: 14px; gap: 15px; }
     }
 
     main { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 20px; }
     .coming-soon { font-size: 16px; font-weight: 700; color: #FF0000; letter-spacing: 0.1em; margin-bottom: 40px; }
-    .hero h1 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
-    .hero p { font-size: 10px; color: rgba(255,255,255,0.7); margin-bottom: 22px; }
-    .button, .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 10px 20px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.2s; }
-    .button:hover, .back-link:hover { background: #fff; color: #000; }
+    .back-link { display: inline-block; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 10px 24px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.2s; }
+    .back-link:hover { background: #fff; color: #000; }
     footer { text-align: center; padding: 30px; font-size: 9px; color: rgba(255,255,255,0.35); }
   </style>
 </head>
@@ -52,7 +40,7 @@
   <header>
     <div class="header-left">
       <div class="logo">VS STUDIO</div>
-      <nav><a href="index.html">HOME</a><a href="recruit.html">RECRUIT</a></nav>
+      <nav><a href="index.html">HOME</a><a href="recruit.html" style="opacity:1;">RECRUIT</a></nav>
     </div>
     <div class="lang-dropdown" id="langMenu">
       <div class="lang-button">
@@ -62,40 +50,21 @@
       </div>
       <div class="dropdown-content">
         <a href="#" onclick="location.reload()">Japanese</a>
-        <a href="#" id="toEnglish">English</a>
+        <a href="en-recruit.html">English</a>
       </div>
     </div>
   </header>
-
   <main>
-    <section class="hero" id="homeContent">
-      <h1>Welcome to VS Studio</h1>
-      <p>Official Website of VS Studio</p>
-      <a class="button" href="recruit.html">RECRUIT</a>
-    </section>
-    <div id="recruitContent" style="display:none;">
+    <div>
       <div class="coming-soon">このページは2026年6月頃公開されます。</div>
       <a href="index.html" class="back-link">Back to Home</a>
     </div>
   </main>
-
   <footer>© VS Studio Inc.</footer>
-
   <script>
     const langMenu = document.getElementById('langMenu');
-    const toEnglish = document.getElementById('toEnglish');
-    const isRecruit = window.location.pathname.includes('recruit');
-
     langMenu.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('active'); });
     document.addEventListener('click', () => langMenu.classList.remove('active'));
-
-    if(isRecruit) {
-      document.getElementById('homeContent').style.display = 'none';
-      document.getElementById('recruitContent').style.display = 'block';
-      toEnglish.href = 'en-recruit.html';
-    } else {
-      toEnglish.href = 'en.html';
-    }
   </script>
 </body>
 </html>
