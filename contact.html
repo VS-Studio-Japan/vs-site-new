@@ -7,13 +7,19 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     html, body {
       width: 100%;
       min-height: 100%;
       background: #000;
       color: #fff;
-      font-family: sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       overflow-x: hidden;
+      font-size: 14px;
     }
 
     body {
@@ -44,6 +50,7 @@
       font-weight: 700;
       letter-spacing: 0.35em;
       text-align: center;
+      white-space: nowrap;
     }
 
     nav {
@@ -174,6 +181,7 @@
       letter-spacing: 4px;
       font-weight: normal;
       margin-bottom: 40px;
+      font-size: 28px;
     }
 
     .form-group {
@@ -184,7 +192,8 @@
     label {
       display: block;
       margin-bottom: 8px;
-      font-size: 0.9rem;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     input[type="text"],
@@ -197,6 +206,11 @@
       color: #fff;
       box-sizing: border-box;
       outline: none;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
     }
 
     .radio-group {
@@ -212,6 +226,9 @@
     .radio-item input {
       margin-right: 12px;
       cursor: pointer;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
 
     .radio-item label {
@@ -219,6 +236,8 @@
       margin-bottom: 0;
       font-weight: normal;
       cursor: pointer;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     button {
@@ -231,6 +250,10 @@
       cursor: pointer;
       letter-spacing: 2px;
       margin-top: 20px;
+      font-size: 13px;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
     }
 
     button:hover {
