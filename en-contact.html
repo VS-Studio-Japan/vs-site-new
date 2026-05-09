@@ -5,29 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CONTACT | VS Studio</title>
   <style>
+    /* CSSは日本語版と共通 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; height: 100%; background: #000; color: #fff; font-family: Arial, sans-serif; overflow-x: hidden; }
     body { display: flex; flex-direction: column; min-height: 100vh; }
-
     header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
     .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.35em; text-align: center; }
     nav { display: flex; gap: 15px; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; }
     nav a { color: #fff; text-decoration: none; opacity: 0.45; }
     nav a.active { opacity: 1; }
-
     .lang-dropdown { position: relative; cursor: pointer; }
     .lang-button { display: flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid #fff; border-radius: 25px; font-size: 12px; color: #fff; background: #000; }
     .dropdown-content { position: absolute; top: 110%; left: 50%; transform: translateX(-50%); background: #111; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 120px; display: none; z-index: 100; }
     .dropdown-content a { color: #fff; padding: 12px; text-decoration: none; display: block; font-size: 12px; text-align: center; }
     .lang-dropdown.active .dropdown-content { display: block; }
-
     @media (min-width: 768px) {
       header { flex-direction: row; justify-content: space-between; padding: 40px 60px; }
       .logo { font-size: 39px; }
       nav { font-size: 16px; gap: 30px; }
       .dropdown-content { left: auto; right: 0; transform: none; }
     }
-
     main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; }
     .form-container { width: 100%; max-width: 550px; position: relative; }
     h1 { font-size: 20px; letter-spacing: 0.25em; margin-bottom: 40px; text-align: center; }
@@ -35,38 +32,18 @@
     .input-group { display: flex; flex-direction: column; gap: 10px; }
     label { font-size: 12px; color: rgba(255,255,255,0.7); }
     .required { color: #FF0000; margin-left: 5px; }
-    
-    input, textarea {
-      background: transparent; border: 1px solid rgba(255,255,255,0.3); padding: 14px; color: #fff; font-size: 15px; outline: none; transition: 0.3s;
-    }
+    input, textarea { background: transparent; border: 1px solid rgba(255,255,255,0.3); padding: 14px; color: #fff; font-size: 15px; outline: none; transition: 0.3s; }
     input:focus, textarea:focus { border-color: #fff; }
-
     .radio-group { display: flex; flex-direction: column; gap: 12px; margin-top: 5px; }
     .radio-item { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; }
-    
-    /* ボタンが押せない原因を防ぐため z-index を調整 */
-    button {
-      position: relative; z-index: 10; background: #fff; color: #000; border: none; padding: 18px; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: 20px; font-weight: bold;
-    }
+    button { position: relative; z-index: 10; background: #fff; color: #000; border: none; padding: 18px; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: 20px; font-weight: bold; }
     button:hover { opacity: 0.8; }
-
-    /* 送信完了メッセージ (初期状態は非表示) */
-    #success-message {
-      display: none;
-      text-align: center;
-      padding: 40px;
-      border: 1px solid #fff;
-      margin-top: 20px;
-    }
-
+    #success-message { display: none; text-align: center; padding: 40px; border: 1px solid #fff; margin-top: 20px; }
     footer { text-align: center; padding: 40px; font-size: 10px; color: rgba(255,255,255,0.3); }
   </style>
 </head>
 <body>
-
-  <script type="text/javascript">
-    let submitted = false;
-  </script>
+  <script type="text/javascript">let submitted = false;</script>
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){window.location='#'; document.getElementById('contact-form').style.display='none'; document.getElementById('success-message').style.display='block';}"></iframe>
 
   <header>
@@ -90,11 +67,10 @@
   <main>
     <div class="form-container">
       <h1>CONTACT</h1>
-
-      <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdO9027pB6X7XGz8Vb8v8T3Z-v3T8v3T8v3T8v3T8v3T8v3T8/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
         
         <div class="input-group">
-          <label>Name<span class="required">*</span></label>
+          <label>Full Name<span class="required">*</span></label>
           <input type="text" name="entry.1809071060" required placeholder="Your Name">
         </div>
 
@@ -133,18 +109,12 @@
         <p>Thank you for your inquiry.<br>Our representative will contact you shortly.</p>
         <button onclick="location.href='en.html'" style="margin-top:20px;">Back to Top</button>
       </div>
-
     </div>
   </main>
-
   <footer>© VS Studio Inc.</footer>
-
   <script>
     const langMenu = document.getElementById('langMenu');
-    langMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langMenu.classList.toggle('active');
-    });
+    langMenu.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('active'); });
     document.addEventListener('click', () => langMenu.classList.remove('active'));
   </script>
 </body>
