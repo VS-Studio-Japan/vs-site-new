@@ -10,8 +10,9 @@
         .form-group { margin-bottom: 30px; text-align: left; }
         label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
         input[type="text"], input[type="email"], textarea {
-            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box;
+            width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box; outline: none;
         }
+        input:focus, textarea:focus { border-color: #fff; }
         .radio-group { margin-top: 10px; }
         .radio-item { margin-bottom: 12px; display: flex; align-items: center; }
         .radio-item input { margin-right: 12px; cursor: pointer; }
@@ -21,48 +22,50 @@
             font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
         }
         button:hover { background-color: #ccc; }
-        #thanks_message { display: none; padding: 40px; border: 1px solid #333; margin-top: 50px; }
     </style>
 </head>
 <body>
 
-    <div id="form_area">
-        <h1>CONTACT</h1>
-        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-            <div class="form-group">
-                <label for="name">お名前 *</label>
-                <input type="text" id="name" name="entry.2120017129" required>
-            </div>
-            <div class="form-group">
-                <label for="email">メールアドレス *</label>
-                <input type="email" id="email" name="entry.176435036" required>
-            </div>
-            <div class="form-group">
-                <label>お問い合わせ種別 *</label>
-                <div class="radio-group">
-                    <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
-                    <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
-                    <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
-                <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
-            </div>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
+    <h1>CONTACT</h1>
 
-    <div id="thanks_message">
-        <h2>THANK YOU</h2>
-        <p>お問い合わせを受け付けました。</p>
-        <button onclick="window.location.href='index.html';" style="width: auto;">HOME</button>
-    </div>
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" id="contact-form">
 
-    <script type="text/javascript">
-        var submitted = false;
+        <div class="form-group">
+            <label for="name">お名前 *</label>
+            <input type="text" name="entry.2120017129" id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">メールアドレス *</label>
+            <input type="email" name="entry.176435036" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>お問い合わせ種別 *</label>
+            <div class="radio-group">
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
+                <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
+            <textarea name="entry.1989028886" id="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+    <script>
+        // 送信ボタンを押した数秒後に、強制的にHOMEへ移動させる（Googleの白い画面を見せない対策）
+        document.getElementById('contact-form').onsubmit = function() {
+            setTimeout(function() {
+                window.location.href = 'index.html'; 
+            }, 1000); // 1秒後に移動（この間に送信を完了させる）
+        };
     </script>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('form_area').style.display='none'; document.getElementById('thanks_message').style.display='block';}"></iframe>
 
 </body>
 </html>
