@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VS Studio お問い合わせ</title>
     <style>
-        /* 画像 image_814518.jpg の黒背景デザインに準拠 */
+        /* 黒背景・白文字のデザインを維持 */
         body { background-color: #000; color: #fff; font-family: sans-serif; padding: 40px 20px; max-width: 600px; margin: 0 auto; text-align: center; }
         h1 { letter-spacing: 4px; font-weight: normal; margin-bottom: 40px; }
         .form-group { margin-bottom: 30px; text-align: left; }
         label { display: block; margin-bottom: 8px; font-size: 0.9rem; }
-        input[type="text"], input[type="email"], select, textarea {
+        input[type="text"], input[type="email"], textarea {
             width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #fff; box-sizing: border-box;
         }
         .radio-group { margin-top: 10px; }
-        .radio-item { margin-bottom: 8px; display: flex; align-items: center; }
-        .radio-item input { margin-right: 10px; }
-        .radio-item label { display: inline; margin-bottom: 0; font-weight: normal; }
+        .radio-item { margin-bottom: 12px; display: flex; align-items: center; }
+        .radio-item input { margin-right: 12px; }
+        .radio-item label { display: inline; margin-bottom: 0; font-weight: normal; cursor: pointer; }
         button { 
             width: 100%; padding: 15px; background-color: #fff; color: #000; border: none; 
             font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            <label for="type">お問い合わせ種別 *</label>
+            <label>お問い合わせ種別 *</label>
             <div class="radio-group">
                 <div class="radio-item"><input type="radio" name="entry.571404175" value="採用に関するお問い合わせ" id="type1" required><label for="type1">採用に関するお問い合わせ</label></div>
                 <div class="radio-item"><input type="radio" name="entry.571404175" value="取材に関するお問い合わせ" id="type2"><label for="type2">取材に関するお問い合わせ</label></div>
@@ -52,15 +52,6 @@
         <div class="form-group">
             <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
             <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>ご希望の返信方法</label>
-            <div class="radio-group">
-                <div class="radio-item"><input type="radio" name="entry.1778134371" value="メール" id="res1" required><label for="res1">メール</label></div>
-                <div class="radio-item"><input type="radio" name="entry.1778134371" value="電話" id="res2"><label for="res2">電話</label></div>
-                <div class="radio-item"><input type="radio" name="entry.1778134371" value="どちらでも可" id="res3"><label for="res3">どちらでも可</label></div>
-            </div>
         </div>
 
         <button type="submit">Send Message</button>
