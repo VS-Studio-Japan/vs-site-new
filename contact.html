@@ -14,35 +14,29 @@
         }
         .radio-group { margin-top: 10px; }
         .radio-item { margin-bottom: 12px; display: flex; align-items: center; }
-        .radio-item input { margin-right: 12px; }
+        .radio-item input { margin-right: 12px; cursor: pointer; }
         .radio-item label { display: inline; margin-bottom: 0; font-weight: normal; cursor: pointer; }
         button { 
             width: 100%; padding: 15px; background-color: #fff; color: #000; border: none; 
             font-weight: bold; cursor: pointer; letter-spacing: 2px; margin-top: 20px;
         }
         button:hover { background-color: #ccc; }
-
-        /* 送信完了後のメッセージ用スタイル */
-        #thanks_message { display: none; padding: 40px; border: 1px solid #333; }
+        #thanks_message { display: none; padding: 40px; border: 1px solid #333; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <div id="form_area">
         <h1>CONTACT</h1>
-        
         <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-
             <div class="form-group">
                 <label for="name">お名前 *</label>
                 <input type="text" id="name" name="entry.2120017129" required>
             </div>
-
             <div class="form-group">
                 <label for="email">メールアドレス *</label>
                 <input type="email" id="email" name="entry.176435036" required>
             </div>
-
             <div class="form-group">
                 <label>お問い合わせ種別 *</label>
                 <div class="radio-group">
@@ -51,12 +45,10 @@
                     <div class="radio-item"><input type="radio" name="entry.571404175" value="その他" id="type3"><label for="type3">その他</label></div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="message">お問い合わせ内容（具体的な詳細をご記入ください） *</label>
                 <textarea id="message" name="entry.1989028886" rows="5" required></textarea>
             </div>
-
             <button type="submit">Send Message</button>
         </form>
     </div>
@@ -64,7 +56,7 @@
     <div id="thanks_message">
         <h2>THANK YOU</h2>
         <p>お問い合わせを受け付けました。</p>
-        <button onclick="location.reload();" style="width: auto;">戻る</button>
+        <button onclick="window.location.href='index.html';" style="width: auto;">HOME</button>
     </div>
 
     <script type="text/javascript">
