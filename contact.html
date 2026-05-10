@@ -332,7 +332,7 @@
       <div id="form_area">
         <h1>CONTACT</h1>
 
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleContactSubmit();">
           
           <div class="form-group">
             <label>お名前 *</label>
@@ -372,8 +372,15 @@
   class="cf-turnstile"
   data-sitekey="0x4AAAAAADMqOJK21AWBxxqR"
   data-action="contact">
+  data-callback="turnstileSuccess"
+  data-expired-callback="turnstileExpired"
+  data-error-callback="turnstileExpired">
 </div>
-          <button type="submit">送信する</button>
+
+<p id="turnstile-error" style="display:none; color:#ff6b6b; font-size:12px; text-align:center; margin:10px 0 0;">
+  人間確認が完了していません。しばらく待ってから、もう一度お試しください。
+</p>
+          <button type="submit" id="submit-button" disabled>送信する</button>
         </form>
 
         <a href="index.html" class="back-link">BACK TO HOME</a>
@@ -402,6 +409,47 @@
     });
 
     var submitted = false;
+    var turnstileVerified = false;
+
+function turnstileSuccess() {
+  turnstileVerified = true;
+
+  var submitButton = document.getElementById('submit-button');
+  var errorMessage = document.getElementById('turnstile-error');
+
+  if (submitButton) {
+    submitButton.disabled = false;
+  }
+
+  if (errorMessage) {
+    errorMessage.style.display = 'none';
+  }
+}
+
+function turnstileExpired() {
+  turnstileVerified = false;
+
+  var submitButton = document.getElementById('submit-button');
+
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
+}
+
+function handleContactSubmit() {
+  if (!turnstileVerified) {
+    var errorMessage = document.getElementById('turnstile-error');
+
+    if (errorMessage) {
+      errorMessage.style.display = 'block';
+    }
+
+    return false;
+  }
+
+  submitted = true;
+  return true;
+}
   </script>
 
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('form_area').style.display='none'; document.getElementById('thanks_message').style.display='block';}"></iframe>
