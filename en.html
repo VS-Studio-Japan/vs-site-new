@@ -196,12 +196,15 @@
     }
 
     .x-link {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 52px;
-      opacity: 0.75;
+      width: 34px;
+      height: 34px;
+      margin: 96px auto 0;
+      opacity: 0.85;
       transition: 0.2s;
+      text-decoration: none;
     }
 
     .x-link:hover {
@@ -210,16 +213,17 @@
     }
 
     .x-logo {
-      width: 34px;
-      height: 34px;
+      width: 100%;
+      height: 100%;
       display: block;
-      border-radius: 8px;
+      object-fit: contain;
     }
 
     @media (min-width: 768px) {
-      .x-logo {
+      .x-link {
         width: 42px;
         height: 42px;
+        margin-top: 112px;
       }
     }
 
@@ -263,6 +267,7 @@
       <h1>Welcome to VS Studio</h1>
       <p>Official Website of VS Studio</p>
       <a class="button" href="en-recruit.html">RECRUIT</a>
+
       <a class="x-link" href="https://x.com/VS_Studio_Inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on X">
         <img class="x-logo" src="X.png" alt="X">
       </a>
