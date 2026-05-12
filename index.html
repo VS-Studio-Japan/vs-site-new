@@ -34,14 +34,19 @@
       flex-direction: column;
     }
 
-    /* 白帯：ロゴと言語選択だけ */
     header {
       width: 100%;
-      background: #fff;
-      color: #000;
-      padding: 28px 42px;
+      background: #000;
+      padding: 34px 42px 0;
       box-sizing: border-box;
-      position: relative;
+    }
+
+    .topbar {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .site-logo {
@@ -51,29 +56,24 @@
     }
 
     .language {
-      position: absolute;
-      top: 30px;
-      right: 42px;
       display: inline-flex;
       align-items: center;
       gap: 7px;
+      padding-top: 6px;
       font-size: 13px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(0, 0, 0, 0.75);
+      color: rgba(255, 255, 255, 0.78);
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .language:hover {
       opacity: 0.6;
     }
 
-    /* 黒背景側のメニュー */
     .global-nav {
-      width: 100%;
-      background: #000;
-      padding: 22px 42px 0;
-      box-sizing: border-box;
+      margin-top: 28px;
       display: flex;
       align-items: center;
       gap: 30px;
@@ -94,6 +94,7 @@
     main {
       flex: 1;
       background: #000;
+      min-height: 420px;
     }
 
     footer {
@@ -136,7 +137,7 @@
 
     @media (max-width: 760px) {
       header {
-        padding: 24px 24px;
+        padding: 28px 24px 0;
       }
 
       .site-logo {
@@ -144,37 +145,56 @@
       }
 
       .language {
-        top: 26px;
-        right: 24px;
+        padding-top: 4px;
         font-size: 12px;
       }
 
       .global-nav {
-        padding: 20px 24px 0;
+        margin-top: 24px;
         gap: 20px;
         flex-wrap: wrap;
         font-size: 12px;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 480px) {
       header {
-        padding: 22px 20px;
+        padding: 24px 20px 0;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        gap: 12px;
       }
 
       .site-logo {
-        width: 220px;
+        width: 210px;
       }
 
       .language {
-        position: static;
-        margin-top: 18px;
+        padding-top: 3px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
       }
 
       .global-nav {
-        padding: 18px 20px 0;
+        margin-top: 22px;
         gap: 16px;
         font-size: 11px;
+      }
+
+      main {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .site-logo {
+        width: 185px;
+      }
+
+      .language {
+        font-size: 10px;
       }
     }
   </style>
@@ -184,23 +204,25 @@
   <div class="page">
 
     <header>
-      <a href="index.html" aria-label="VS Studio Home">
-        <img
-          src="vs-studio-logo-red-horizontal-snk.svg"
-          alt="VS Studio"
-          class="site-logo"
-        >
-      </a>
+      <div class="topbar">
+        <a href="index.html" aria-label="VS Studio Home">
+          <img
+            src="vs-studio-logo-red-horizontal-snk.svg"
+            alt="VS Studio"
+            class="site-logo"
+          >
+        </a>
 
-      <a href="index.html" class="language">🌐 Japanese</a>
+        <a href="index.html" class="language">🌐 Japanese</a>
+      </div>
+
+      <nav class="global-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="recruit.html">Recruit</a>
+        <a href="contact.html">Contact</a>
+        <a href="access.html">Access</a>
+      </nav>
     </header>
-
-    <nav class="global-nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="recruit.html">Recruit</a>
-      <a href="contact.html">Contact</a>
-      <a href="access.html">Access</a>
-    </nav>
 
     <main>
       <!-- 
