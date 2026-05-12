@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACCESS | VS Studio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+      box-sizing: border-box;
+    }
+
+    .logo {
+      margin-bottom: 48px;
+      font-size: 24px;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 36px;
+      letter-spacing: 0.18em;
+      margin-bottom: 24px;
+    }
+
+    .address {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+      color: #ddd;
+    }
+
+    .map-wrap {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto 40px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 4 / 3;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .button-area {
+      margin-top: 40px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back-button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #888;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 32px 16px 48px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .map-wrap {
+        aspect-ratio: 1 / 1;
+        border-radius: 14px;
+      }
+
+      .address {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="logo">VS Studio</div>
+
+    <h1>ACCESS</h1>
+
+    <div class="address">
+      新目黒東急ビル<br>
+      Tokyo, Japan
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.723824215317!2d139.71160537711154!3d35.6345343726023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b191f6aaaab%3A0xd0f7cace2aa232a4!2z5paw55uu6buS5p2x5oCl44OT44Or!5e0!3m2!1sja!2sjp!4v1778547325387!5m2!1sja!2sjp"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="button-area">
+      <a class="back-button" href="index.html">BACK TO HOME</a>
+    </div>
+
+    <footer>
+      ©VS Studio
+    </footer>
+  </main>
+</body>
+</html>

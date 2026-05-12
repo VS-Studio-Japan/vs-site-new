@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ACCESS | VS Studio</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      opacity: 0.85;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .lang-dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .lang-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border: 1px solid #fff;
+      border-radius: 25px;
+      font-size: 12px;
+      color: #fff;
+      background: #000;
+      transition: 0.3s;
+    }
+
+    .lang-button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .icon-globe {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      min-width: 120px;
+      display: none;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px;
+      text-decoration: none;
+      display: block;
+      font-size: 12px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .lang-dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    main {
+      flex: 1;
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+    .access-section {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .access-section h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      margin-bottom: 18px;
+    }
+
+    .access-lead {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 34px;
+      line-height: 1.8;
+    }
+
+    .address-box {
+      margin-bottom: 30px;
+      line-height: 1.9;
+    }
+
+    .building-name {
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .address-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .map-wrap {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 42px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 4 / 3;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 24px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 40px 60px;
+      }
+
+      .header-left {
+        align-items: flex-start;
+      }
+
+      .logo {
+        font-size: 39px;
+      }
+
+      nav {
+        font-size: 16px;
+        gap: 30px;
+        justify-content: flex-start;
+      }
+
+      .dropdown-content {
+        left: auto;
+        right: 0;
+        transform: none;
+      }
+
+      main {
+        padding: 50px 40px 30px;
+      }
+
+      .access-section h1 {
+        font-size: 40px;
+      }
+
+      .access-lead {
+        font-size: 12px;
+      }
+
+      .building-name {
+        font-size: 18px;
+      }
+
+      .address-text {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 24px;
+      }
+
+      nav {
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .access-section h1 {
+        font-size: 28px;
+      }
+
+      .map-wrap {
+        aspect-ratio: 1 / 1;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="logo">VS STUDIO</div>
+      <nav>
+        <a href="en.html">HOME</a>
+        <a href="en-recruit.html">RECRUIT</a>
+        <a href="en-access.html">ACCESS</a>
+        <a href="en-contact.html">CONTACT</a>
+      </nav>
+    </div>
+
+    <div class="lang-dropdown" id="langMenu">
+      <div class="lang-button">
+        <svg class="icon-globe" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span>English</span>
+      </div>
+      <div class="dropdown-content">
+        <a href="access.html">Japanese</a>
+        <a href="en-access.html">English</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="access-section">
+      <h1>ACCESS</h1>
+
+      <p class="access-lead">
+        VS Studio Office Location
+      </p>
+
+      <div class="address-box">
+        <div class="building-name">Shin-Meguro Tokyu Building</div>
+        <div class="address-text">Tokyo, Japan</div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.723824215317!2d139.71160537711154!3d35.6345343726023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b191f6aaaab%3A0xd0f7cace2aa232a4!2z5paw55uu6buS5p2x5oCl44OT44Or!5e0!3m2!1sja!2sjp!4v1778547325387!5m2!1sja!2sjp"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <a class="button" href="en.html">BACK TO HOME</a>
+    </section>
+  </main>
+
+  <footer>©VS Studio</footer>
+
+  <script>
+    const langMenu = document.getElementById('langMenu');
+
+    langMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      langMenu.classList.remove('active');
+    });
+  </script>
+
+</body>
+</html>
