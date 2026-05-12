@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEWS | VS Studio</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; min-height: 100%; background: #000; color: #fff; font-family: "Helvetica Neue", Arial, sans-serif; overflow-x: hidden; }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    header { width: 100%; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; }
+    .header-left { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.35em; text-align: center; white-space: nowrap; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; }
+    nav a { color: #fff; text-decoration: none; opacity: 0.45; transition: 0.3s; }
+    nav a.active, nav a:hover { opacity: 1; }
+    .lang-dropdown { position: relative; cursor: pointer; }
+    .lang-button { display: flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid #fff; border-radius: 25px; font-size: 12px; color: #fff; background: #000; transition: 0.3s; }
+    .lang-button:hover { background: #fff; color: #000; }
+    .icon-globe { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; flex-shrink: 0; }
+    .dropdown-content { position: absolute; top: 110%; left: 50%; transform: translateX(-50%); background: #111; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; min-width: 120px; display: none; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+    .dropdown-content a { color: #fff; padding: 12px; text-decoration: none; display: block; font-size: 12px; text-align: center; transition: 0.2s; }
+    .dropdown-content a:hover { background: rgba(255,255,255,0.1); }
+    .lang-dropdown.active .dropdown-content { display: block; }
+    main { flex: 1; width: 100%; padding: 52px 20px 40px; }
+    .news-section { width: 100%; max-width: 860px; margin: 0 auto; }
+    .news-section h1 { font-size: 32px; font-weight: 600; letter-spacing: 0.18em; margin-bottom: 42px; text-align: center; }
+    .news-item { border-top: 1px solid rgba(255,255,255,0.18); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 28px 0 30px; }
+    .news-date { display: block; font-size: 12px; letter-spacing: 0.14em; color: rgba(255,255,255,0.55); margin-bottom: 14px; }
+    .news-title { font-size: 20px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 16px; line-height: 1.5; }
+    .news-body { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,0.72); letter-spacing: 0.04em; }
+    footer { text-align: center; padding: 30px; font-size: 9px; color: rgba(255,255,255,0.35); }
+    @media (min-width: 768px) {
+      header { flex-direction: row; justify-content: space-between; align-items: flex-start; padding: 40px 60px; }
+      .header-left { align-items: flex-start; }
+      .logo { font-size: 39px; }
+      nav { font-size: 16px; gap: 30px; justify-content: flex-start; }
+      .dropdown-content { left: auto; right: 0; transform: none; }
+      main { padding: 62px 40px 50px; }
+      .news-section h1 { font-size: 40px; }
+      .news-title { font-size: 22px; }
+    }
+    @media (max-width: 480px) {
+      .logo { font-size: 24px; }
+      nav { gap: 12px; font-size: 11px; }
+      .news-section h1 { font-size: 28px; margin-bottom: 34px; }
+      .news-title { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="logo">VS STUDIO</div>
+      <nav>
+        <a href="index.html">HOME</a>
+        <a href="news.html" class="active">NEWS</a>
+        <a href="recruit.html">RECRUIT</a>
+        <a href="access.html">ACCESS</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+    </div>
+    <div class="lang-dropdown" id="langMenu">
+      <div class="lang-button">
+        <svg class="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <span>Japanese</span>
+      </div>
+      <div class="dropdown-content">
+        <a href="news.html">Japanese</a>
+        <a href="en-news.html">English</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="news-section">
+      <h1>NEWS</h1>
+      <article class="news-item">
+        <time class="news-date" datetime="2026-05-01">2026.05.01</time>
+        <h2 class="news-title">VS Studioを設立しました。</h2>
+        <p class="news-body">2026年5月1日、VS Studioを設立しました。</p>
+      </article>
+    </section>
+  </main>
+  <footer>©VS Studio</footer>
+  <script>
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      langMenu.addEventListener('click', function(e) { e.stopPropagation(); langMenu.classList.toggle('active'); });
+      document.addEventListener('click', function() { langMenu.classList.remove('active'); });
+    }
+  </script>
+</body>
+</html>
