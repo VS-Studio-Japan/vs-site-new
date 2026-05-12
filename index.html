@@ -50,8 +50,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.045) 0%, rgba(0, 0, 0, 0) 42%),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.32));
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.038) 0%, rgba(0, 0, 0, 0) 42%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.36));
       pointer-events: none;
       z-index: 2;
     }
@@ -60,7 +60,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 260vw;
+      width: 270vw;
       transform: translate(-50%, -50%) rotate(-18deg);
       transform-origin: center;
       z-index: 1;
@@ -68,7 +68,7 @@
 
     .vs-row {
       width: max-content;
-      margin: 16px 0;
+      margin: 22px 0;
       overflow: visible;
     }
 
@@ -79,91 +79,90 @@
       animation-name: flowToUpperRight;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
-      animation-duration: 46s;
+      animation-duration: 50s;
     }
 
     .vs-set {
       display: flex;
       align-items: center;
-      gap: 58px;
-      padding-right: 58px;
+      gap: 70px;
+      padding-right: 70px;
       white-space: nowrap;
-      font-size: clamp(54px, 8.1vw, 150px);
+      font-size: clamp(50px, 7.6vw, 138px);
       font-weight: 800;
       line-height: 0.86;
-      letter-spacing: 0.015em;
-      color: rgba(255, 255, 255, 0.055);
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.035);
     }
 
     .vs-set span {
       display: inline-block;
     }
 
-    .vs-set strong {
-      font-weight: 900;
-      letter-spacing: 0.035em;
+    .vs-set em {
+      font-style: normal;
+      color: rgba(255, 255, 255, 0.115);
     }
 
     .vs-row:nth-child(1) .vs-track {
-      animation-duration: 52s;
-      animation-delay: -21s;
+      animation-duration: 58s;
+      animation-delay: -24s;
     }
 
     .vs-row:nth-child(2) .vs-track {
-      animation-duration: 43s;
-      animation-delay: -7s;
+      animation-duration: 48s;
+      animation-delay: -8s;
     }
 
     .vs-row:nth-child(3) .vs-track {
-      animation-duration: 58s;
-      animation-delay: -33s;
+      animation-duration: 64s;
+      animation-delay: -38s;
     }
 
     .vs-row:nth-child(4) .vs-track {
-      animation-duration: 47s;
-      animation-delay: -15s;
+      animation-duration: 52s;
+      animation-delay: -17s;
     }
 
     .vs-row:nth-child(5) .vs-track {
-      animation-duration: 62s;
-      animation-delay: -41s;
+      animation-duration: 68s;
+      animation-delay: -43s;
     }
 
     .vs-row:nth-child(6) .vs-track {
-      animation-duration: 50s;
-      animation-delay: -25s;
+      animation-duration: 55s;
+      animation-delay: -29s;
     }
 
     .vs-row:nth-child(7) .vs-track {
-      animation-duration: 56s;
-      animation-delay: -12s;
+      animation-duration: 61s;
+      animation-delay: -13s;
     }
 
     .vs-row:nth-child(8) .vs-track {
-      animation-duration: 45s;
-      animation-delay: -31s;
-    }
-
-    .vs-row:nth-child(9) .vs-track {
-      animation-duration: 61s;
-      animation-delay: -18s;
-    }
-
-    .vs-row:nth-child(10) .vs-track {
-      animation-duration: 49s;
-      animation-delay: -36s;
+      animation-duration: 50s;
+      animation-delay: -34s;
     }
 
     .vs-row:nth-child(odd) .vs-set {
-      color: rgba(255, 255, 255, 0.052);
+      color: rgba(255, 255, 255, 0.032);
     }
 
     .vs-row:nth-child(even) .vs-set {
-      color: rgba(255, 255, 255, 0.038);
+      color: rgba(255, 255, 255, 0.026);
     }
 
     .vs-row:nth-child(3n) .vs-set {
-      color: rgba(255, 255, 255, 0.065);
+      color: rgba(255, 255, 255, 0.040);
+    }
+
+    .vs-row:nth-child(odd) .vs-set em {
+      color: rgba(255, 255, 255, 0.115);
+    }
+
+    .vs-row:nth-child(even) .vs-set em {
+      color: rgba(255, 255, 255, 0.095);
     }
 
     @keyframes flowToUpperRight {
@@ -261,8 +260,8 @@
     .photo-placeholder {
       width: min(72vw, 920px);
       aspect-ratio: 16 / 9;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(0, 0, 0, 0.26);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(0, 0, 0, 0.34);
       backdrop-filter: blur(1px);
       display: flex;
       align-items: center;
@@ -336,8 +335,8 @@
       }
 
       .vs-set {
-        gap: 48px;
-        padding-right: 48px;
+        gap: 56px;
+        padding-right: 56px;
       }
     }
 
@@ -384,11 +383,11 @@
       }
 
       .vs-tilt {
-        width: 330vw;
+        width: 340vw;
       }
 
       .vs-row {
-        margin: 14px 0;
+        margin: 18px 0;
       }
     }
 
@@ -433,18 +432,17 @@
       }
 
       .vs-tilt {
-        width: 430vw;
+        width: 440vw;
       }
 
       .vs-row {
-        margin: 12px 0;
+        margin: 14px 0;
       }
 
       .vs-set {
-        gap: 36px;
-        padding-right: 36px;
-        font-size: clamp(48px, 17vw, 92px);
-        letter-spacing: 0.01em;
+        gap: 40px;
+        padding-right: 40px;
+        font-size: clamp(48px, 16vw, 92px);
       }
     }
 
@@ -479,41 +477,20 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vs-row">
-          <div class="vs-track">
-            <div class="vs-set">
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Versus</span>
-            </div>
-            <div class="vs-set">
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Versus</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
             </div>
           </div>
         </div>
@@ -521,41 +498,20 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vs-row">
-          <div class="vs-track">
-            <div class="vs-set">
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-            </div>
-            <div class="vs-set">
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
             </div>
           </div>
         </div>
@@ -563,41 +519,20 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vs-row">
-          <div class="vs-track">
-            <div class="vs-set">
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-            </div>
-            <div class="vs-set">
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
             </div>
           </div>
         </div>
@@ -605,41 +540,20 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Versus</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Versus</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="vs-row">
-          <div class="vs-track">
-            <div class="vs-set">
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-            </div>
-            <div class="vs-set">
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Vector Shift</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
             </div>
           </div>
         </div>
@@ -647,20 +561,20 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Variable System</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Video Game Software R&amp;D</span>
-              <span><strong>VS</strong> / Vital Spark</span>
-              <span><strong>VS</strong> / Volition Shift</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
             </div>
           </div>
         </div>
@@ -668,20 +582,62 @@
         <div class="vs-row">
           <div class="vs-track">
             <div class="vs-set">
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
             </div>
             <div class="vs-set">
-              <span><strong>VS</strong> / Visual Structure</span>
-              <span><strong>VS</strong> / Vertical Slice</span>
-              <span><strong>VS</strong> / Visionary Standard</span>
-              <span><strong>VS</strong> / Vector Shift</span>
-              <span><strong>VS</strong> / Versus</span>
-              <span><strong>VS</strong> / Vanguard Spirit</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
             </div>
           </div>
         </div>
