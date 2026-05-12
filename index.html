@@ -40,7 +40,7 @@
       padding: 34px 42px 0;
       box-sizing: border-box;
       position: relative;
-      z-index: 5;
+      z-index: 10;
     }
 
     .header-main {
@@ -108,64 +108,89 @@
       min-height: 620px;
       overflow: hidden;
       background:
-        radial-gradient(circle at center, rgba(255, 255, 255, 0.055) 0%, rgba(0, 0, 0, 0) 42%),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 44%),
         #000;
     }
 
     .vs-background {
       position: absolute;
-      inset: -30%;
+      inset: -34%;
+      z-index: 0;
       pointer-events: none;
       overflow: hidden;
-      opacity: 1;
-      z-index: 0;
     }
 
     .vs-background-inner {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 180vw;
+      width: 190vw;
       transform: translate(-50%, -50%) rotate(-18deg);
       transform-origin: center;
     }
 
     .vs-row {
+      width: max-content;
+      margin: 24px 0;
+      overflow: visible;
+    }
+
+    .vs-track {
       display: flex;
-      gap: 56px;
+      width: max-content;
+      will-change: transform;
+      animation: flowToUpperRight 34s linear infinite;
+    }
+
+    .vs-row:nth-child(2) .vs-track {
+      animation-duration: 42s;
+    }
+
+    .vs-row:nth-child(3) .vs-track {
+      animation-duration: 38s;
+    }
+
+    .vs-row:nth-child(4) .vs-track {
+      animation-duration: 46s;
+    }
+
+    .vs-row:nth-child(5) .vs-track {
+      animation-duration: 40s;
+    }
+
+    .vs-set {
+      display: flex;
+      align-items: center;
+      gap: 58px;
+      padding-right: 58px;
       white-space: nowrap;
-      margin: 22px 0;
-      font-size: clamp(44px, 7vw, 126px);
+      font-size: clamp(46px, 7vw, 128px);
       font-weight: 800;
       line-height: 0.88;
       letter-spacing: 0.035em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.07);
-      will-change: transform;
-      animation: driftToUpperRight 26s linear infinite;
+      color: rgba(255, 255, 255, 0.065);
     }
 
-    .vs-row:nth-child(even) {
+    .vs-row:nth-child(even) .vs-set {
       color: rgba(255, 255, 255, 0.045);
-      animation-duration: 34s;
-      animation-direction: reverse;
     }
 
-    .vs-row:nth-child(3n) {
-      color: rgba(255, 255, 255, 0.06);
-      animation-duration: 30s;
+    .vs-row:nth-child(3n) .vs-set {
+      color: rgba(255, 255, 255, 0.058);
     }
 
-    .vs-row span {
+    .vs-set span {
       display: inline-block;
     }
 
-    @keyframes driftToUpperRight {
+    @keyframes flowToUpperRight {
       0% {
-        transform: translate3d(-80px, 80px, 0);
+        transform: translateX(-50%);
       }
+
       100% {
-        transform: translate3d(220px, -220px, 0);
+        transform: translateX(0);
       }
     }
 
@@ -184,7 +209,7 @@
       width: min(72vw, 920px);
       aspect-ratio: 16 / 9;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(0, 0, 0, 0.38);
+      background: rgba(0, 0, 0, 0.34);
       backdrop-filter: blur(1px);
       display: flex;
       align-items: center;
@@ -203,7 +228,7 @@
       font-size: 12px;
       letter-spacing: 0.08em;
       position: relative;
-      z-index: 5;
+      z-index: 10;
     }
 
     .social {
@@ -251,7 +276,7 @@
       }
 
       .vs-row {
-        margin: 18px 0;
+        margin: 20px 0;
       }
     }
 
@@ -327,17 +352,21 @@
       }
 
       .vs-background {
-        inset: -45%;
+        inset: -48%;
       }
 
       .vs-background-inner {
-        width: 240vw;
+        width: 250vw;
       }
 
       .vs-row {
-        margin: 14px 0;
-        gap: 34px;
-        color: rgba(255, 255, 255, 0.075);
+        margin: 15px 0;
+      }
+
+      .vs-set {
+        gap: 36px;
+        padding-right: 36px;
+        color: rgba(255, 255, 255, 0.07);
       }
 
       .photo-placeholder {
@@ -390,47 +419,102 @@
       <section class="hero" aria-label="VS Studio main visual">
         <div class="vs-background" aria-hidden="true">
           <div class="vs-background-inner">
+
             <div class="vs-row">
-              <span>VIDEO GAME SOFTWARE R&amp;D</span>
-              <span>VERSUS</span>
-              <span>VARIABLE SYSTEM</span>
-              <span>VERTICAL SLICE</span>
+              <div class="vs-track">
+                <div class="vs-set">
+                  <span>VIDEO GAME SOFTWARE R&amp;D</span>
+                  <span>VERSUS</span>
+                  <span>VARIABLE SYSTEM</span>
+                  <span>VERTICAL SLICE</span>
+                  <span>VISIONARY STANDARD</span>
+                </div>
+                <div class="vs-set">
+                  <span>VIDEO GAME SOFTWARE R&amp;D</span>
+                  <span>VERSUS</span>
+                  <span>VARIABLE SYSTEM</span>
+                  <span>VERTICAL SLICE</span>
+                  <span>VISIONARY STANDARD</span>
+                </div>
+              </div>
             </div>
 
             <div class="vs-row">
-              <span>VISIONARY STANDARD</span>
-              <span>VECTOR SHIFT</span>
-              <span>VOLITION SHIFT</span>
-              <span>VIVID STRIKE</span>
+              <div class="vs-track">
+                <div class="vs-set">
+                  <span>VECTOR SHIFT</span>
+                  <span>VOLITION SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VITAL SPARK</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+                <div class="vs-set">
+                  <span>VECTOR SHIFT</span>
+                  <span>VOLITION SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VITAL SPARK</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+              </div>
             </div>
 
             <div class="vs-row">
-              <span>VITAL SPARK</span>
-              <span>VANGUARD SPIRIT</span>
-              <span>VIDEO GAME SOFTWARE R&amp;D</span>
-              <span>VERSUS</span>
+              <div class="vs-track">
+                <div class="vs-set">
+                  <span>VERSUS</span>
+                  <span>VARIABLE SYSTEM</span>
+                  <span>VECTOR SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+                <div class="vs-set">
+                  <span>VERSUS</span>
+                  <span>VARIABLE SYSTEM</span>
+                  <span>VECTOR SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+              </div>
             </div>
 
             <div class="vs-row">
-              <span>VARIABLE SYSTEM</span>
-              <span>VERTICAL SLICE</span>
-              <span>VISIONARY STANDARD</span>
-              <span>VECTOR SHIFT</span>
+              <div class="vs-track">
+                <div class="vs-set">
+                  <span>VIDEO GAME SOFTWARE R&amp;D</span>
+                  <span>VERTICAL SLICE</span>
+                  <span>VISIONARY STANDARD</span>
+                  <span>VOLITION SHIFT</span>
+                  <span>VITAL SPARK</span>
+                </div>
+                <div class="vs-set">
+                  <span>VIDEO GAME SOFTWARE R&amp;D</span>
+                  <span>VERTICAL SLICE</span>
+                  <span>VISIONARY STANDARD</span>
+                  <span>VOLITION SHIFT</span>
+                  <span>VITAL SPARK</span>
+                </div>
+              </div>
             </div>
 
             <div class="vs-row">
-              <span>VOLITION SHIFT</span>
-              <span>VIVID STRIKE</span>
-              <span>VITAL SPARK</span>
-              <span>VANGUARD SPIRIT</span>
+              <div class="vs-track">
+                <div class="vs-set">
+                  <span>VISIONARY STANDARD</span>
+                  <span>VECTOR SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VITAL SPARK</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+                <div class="vs-set">
+                  <span>VISIONARY STANDARD</span>
+                  <span>VECTOR SHIFT</span>
+                  <span>VISUAL STRUCTURE</span>
+                  <span>VITAL SPARK</span>
+                  <span>VANGUARD SPIRIT</span>
+                </div>
+              </div>
             </div>
 
-            <div class="vs-row">
-              <span>VERSUS</span>
-              <span>VECTOR SHIFT</span>
-              <span>VISIONARY STANDARD</span>
-              <span>VANGUARD SPIRIT</span>
-            </div>
           </div>
         </div>
 
