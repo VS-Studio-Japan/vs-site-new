@@ -201,36 +201,188 @@
       font-size: 9px;
       color: rgba(255,255,255,0.35);
     }
+  
+
+/* Unified VS Studio header */
+header {
+  width: 100%;
+  background: transparent;
+  padding: 34px 42px 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  display: block;
+}
+
+.header-main {
+  display: flex;
+  align-items: flex-end;
+  gap: 54px;
+  padding-right: 160px;
+}
+
+.site-logo {
+  display: block;
+  width: 300px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 5px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.global-nav a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.82;
+  transition: opacity 0.2s ease;
+}
+
+.global-nav a.active,
+.global-nav a:hover {
+  opacity: 1;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: 34px;
+  right: 42px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.lang-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.lang-button:hover { opacity: 0.6; }
+
+.globe-icon {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 160%;
+  right: 0;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  min-width: 128px;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  font-size: 12px;
+  text-align: center;
+  transition: background 0.2s ease;
+  opacity: 1;
+}
+
+.dropdown-content a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.lang-dropdown.active .dropdown-content {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .header-main { gap: 36px; padding-right: 145px; }
+  .site-logo { width: 260px; }
+  .global-nav { gap: 22px; font-size: 12px; }
+}
+
+@media (max-width: 760px) {
+  header { padding: 28px 24px 0; }
+  .header-main { display: block; padding-right: 0; }
+  .site-logo { width: 250px; }
+  .lang-dropdown { top: 30px; right: 24px; }
+  .lang-button { font-size: 12px; }
+  .global-nav { margin-top: 24px; padding-bottom: 0; gap: 20px; flex-wrap: wrap; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  header { padding: 24px 20px 0; }
+  .site-logo { width: 210px; }
+  .lang-dropdown { top: 26px; right: 20px; }
+  .lang-button { font-size: 11px; letter-spacing: 0.06em; }
+  .global-nav { margin-top: 22px; gap: 16px; font-size: 11px; }
+}
+
+@media (max-width: 360px) {
+  .site-logo { width: 185px; }
+  .lang-button { font-size: 10px; }
+  .global-nav { gap: 14px; }
+}
+
   </style>
 </head>
 <body>
 
   <header>
-    <div class="header-left">
-      <div class="logo">VS STUDIO</div>
-      <nav>
-        <a href="index.html">HOME</a>
-        <a href="news.html">NEWS</a>
-        <a href="recruit.html" class="active">RECRUIT</a>
-        <a href="access.html">ACCESS</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
-    </div>
+      <div class="header-main">
+        <a href="index.html" aria-label="VS Studio Home">
+          <img
+            src="vs-studio-logo-red-horizontal-snk.svg"
+            alt="VS Studio"
+            class="site-logo"
+          >
+        </a>
 
-    <div class="lang-dropdown" id="langMenu">
-      <div class="lang-button">
-        <svg class="icon-globe" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <span>Japanese</span>
+        <nav class="global-nav" aria-label="Main navigation">
+          <a href="index.html">HOME</a>
+          <a href="news.html">NEWS</a>
+          <a href="recruit.html" class="active">RECRUIT</a>
+          <a href="access.html">ACCESS</a>
+          <a href="contact.html">CONTACT</a>
+        </nav>
       </div>
-      <div class="dropdown-content">
-        <a href="recruit.html">Japanese</a>
-        <a href="en-recruit.html">English</a>
+
+      <div class="lang-dropdown" id="langMenu">
+        <div class="lang-button" aria-label="Language selector">
+          <span class="globe-icon">🌐</span>
+          <span>Japanese</span>
+        </div>
+        <div class="dropdown-content">
+          <a href="recruit.html">Japanese</a>
+          <a href="en-recruit.html">English</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
   <main>
     <div>
