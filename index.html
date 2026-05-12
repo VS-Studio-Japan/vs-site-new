@@ -1,313 +1,366 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VS Studio | Official</title>
+
+  <title>VS Studio</title>
+  <meta name="description" content="VS Studio official website." />
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050505;
+      --text: #f5f5f5;
+      --muted: rgba(255, 255, 255, 0.68);
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #e50012;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     html, body {
-      width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-text {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: clamp(72px, 12vw, 180px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1.05;
+      transform: rotate(-8deg) scale(1.1);
+      color: #ffffff;
+    }
+
+    .bg-text span {
+      display: block;
+      margin-bottom: 0.2em;
     }
 
     header {
-      width: 100%;
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
       position: relative;
-    }
-
-    .header-left {
+      z-index: 2;
+      width: 100%;
+      padding: 28px clamp(22px, 4vw, 56px);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.35em;
-      text-align: center;
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo img {
+      display: block;
+      width: clamp(132px, 15vw, 190px);
+      height: auto;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      align-items: center;
+      gap: clamp(18px, 2vw, 32px);
       font-size: 13px;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
-      opacity: 0.85;
-      transition: 0.3s;
+      color: rgba(255, 255, 255, 0.76);
+      transition: color 0.2s ease, opacity 0.2s ease;
     }
 
     nav a:hover {
-      opacity: 1;
+      color: #ffffff;
     }
 
-    .lang-dropdown {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .lang-button {
+    .language {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
-      border: 1px solid #fff;
-      border-radius: 25px;
-      font-size: 12px;
-      color: #fff;
-      background: #000;
-      transition: 0.3s;
+      padding-left: clamp(10px, 1.5vw, 18px);
+      border-left: 1px solid var(--line);
+      color: rgba(255, 255, 255, 0.72);
     }
 
-    .lang-button:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .icon-globe {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      flex-shrink: 0;
-    }
-
-    .dropdown-content {
-      position: absolute;
-      top: 110%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      min-width: 120px;
-      display: none;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    .dropdown-content a {
-      color: #fff;
-      padding: 12px;
-      text-decoration: none;
-      display: block;
-      font-size: 12px;
-      text-align: center;
-      transition: 0.2s;
-    }
-
-    .dropdown-content a:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .lang-dropdown.active .dropdown-content {
-      display: block;
-    }
-
-    @media (min-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 40px 60px;
-      }
-
-      .header-left {
-        align-items: flex-start;
-      }
-
-      .logo {
-        font-size: 39px;
-      }
-
-      nav {
-        font-size: 16px;
-        gap: 30px;
-        justify-content: flex-start;
-      }
-
-      .dropdown-content {
-        left: auto;
-        right: 0;
-        transform: none;
-      }
+    .globe {
+      font-size: 14px;
+      line-height: 1;
     }
 
     main {
+      position: relative;
+      z-index: 1;
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 80px 24px 56px;
       text-align: center;
-      padding: 40px 20px;
     }
 
-    .hero h1 {
-      font-size: 18px;
+    .hero {
+      width: min(860px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-logo {
+      display: block;
+      width: min(360px, 68vw);
+      height: auto;
+      margin: 0 auto 34px;
+      filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.42));
+    }
+
+    .tagline {
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 30px);
+      line-height: 1.5;
+      letter-spacing: 0.08em;
       font-weight: 600;
-      margin-bottom: 10px;
     }
 
-    .hero p {
-      font-size: 10px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 22px;
+    .subcopy {
+      margin: 22px auto 0;
+      max-width: 660px;
+      color: var(--muted);
+      font-size: clamp(13px, 1.35vw, 16px);
+      line-height: 1.95;
+      letter-spacing: 0.04em;
+    }
+
+    .actions {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .button {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,0.6);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 24px;
-      font-size: 10px;
-      letter-spacing: 0.15em;
+      min-width: 172px;
+      padding: 15px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      transition: 0.2s;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
     .button:hover {
-      background: #fff;
-      color: #000;
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.5);
     }
 
-    .social-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin: 96px auto 0;
+    .button.primary {
+      border-color: rgba(229, 0, 18, 0.75);
+      background: rgba(229, 0, 18, 0.16);
     }
 
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      opacity: 0.85;
-      transition: 0.2s;
-      text-decoration: none;
-    }
-
-    .social-link:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    .social-logo {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-    }
-
-    @media (min-width: 768px) {
-      .social-links {
-        margin-top: 112px;
-      }
-
-      .social-link {
-        width: 42px;
-        height: 42px;
-      }
+    .button.primary:hover {
+      background: rgba(229, 0, 18, 0.28);
+      border-color: rgba(229, 0, 18, 1);
     }
 
     footer {
+      position: relative;
+      z-index: 2;
+      padding: 34px 24px 28px;
       text-align: center;
-      padding: 30px;
-      font-size: 9px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .social {
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      opacity: 0.78;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .social a:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .social img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 22px 20px;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .header-logo img {
+        width: 132px;
+      }
+
+      nav {
+        gap: 13px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .language {
+        padding-left: 10px;
+      }
+
+      main {
+        padding-top: 74px;
+      }
+
+      .hero-logo {
+        width: min(300px, 72vw);
+        margin-bottom: 30px;
+      }
+
+      .actions {
+        margin-top: 40px;
+      }
+
+      .button {
+        min-width: 160px;
+        padding: 14px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .language {
+        border-left: 0;
+        padding-left: 0;
+      }
+
+      .hero-logo {
+        width: min(270px, 76vw);
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="page">
+    <div class="bg-text" aria-hidden="true">
+      <span>VS STUDIO VS STUDIO VS STUDIO</span>
+      <span>VS STUDIO VS STUDIO VS STUDIO</span>
+      <span>VS STUDIO VS STUDIO VS STUDIO</span>
+      <span>VS STUDIO VS STUDIO VS STUDIO</span>
+      <span>VS STUDIO VS STUDIO VS STUDIO</span>
+    </div>
 
-  <header>
-    <div class="header-left">
-      <div class="logo">VS STUDIO</div>
-      <nav>
-        <a href="index.html">HOME</a>
-        <a href="recruit.html">RECRUIT</a>
-        <a href="access.html">ACCESS</a>
-        <a href="contact.html">CONTACT</a>
+    <header>
+      <a href="index.html" class="header-logo" aria-label="VS Studio Home">
+        <img src="vs-studio-logo-red-horizontal-snk.svg" alt="VS Studio">
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="recruit.html">Recruit</a>
+        <a href="contact.html">Contact</a>
+        <a href="access.html">Access</a>
+        <a href="index.html" class="language"><span class="globe">🌐</span> Japanese</a>
       </nav>
-    </div>
+    </header>
 
-    <div class="lang-dropdown" id="langMenu">
-      <div class="lang-button">
-        <svg class="icon-globe" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <span>Japanese</span>
-      </div>
-      <div class="dropdown-content">
-        <a href="index.html">Japanese</a>
-        <a href="en.html">English</a>
-      </div>
-    </div>
-  </header>
+    <main>
+      <section class="hero" aria-label="VS Studio">
+        <img
+          src="vs-studio-logo-red-horizontal-snk.svg"
+          alt="VS Studio"
+          class="hero-logo"
+        >
 
-  <main>
-    <section class="hero">
-      <h1>Welcome to VS Studio</h1>
-      <p>Official Website of VS Studio</p>
-      <a class="button" href="recruit.html">採用情報</a>
+        <p class="tagline">Beyond tradition, crafted to perfection.</p>
 
-      <div class="social-links">
-        <a class="social-link" href="https://x.com/VS_Studio_Inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on X">
-          <img class="social-logo" src="X.png" alt="X">
+        <p class="subcopy">
+          VS Studio is a new game development studio dedicated to creating
+          world-class entertainment with deep craft, bold vision, and uncompromising quality.
+        </p>
+
+        <div class="actions">
+          <a href="recruit.html" class="button primary">Recruit</a>
+          <a href="contact.html" class="button">Contact</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="social" aria-label="Official social media">
+        <a href="https://x.com/VS_Studio_Inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on X">
+          <img src="X.png" alt="X">
         </a>
-
-        <a class="social-link" href="https://www.instagram.com/vs_studio_inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on Instagram">
-          <img class="social-logo" src="Instagram.png" alt="Instagram">
+        <a href="https://www.instagram.com/vs_studio_inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on Instagram">
+          <img src="Instagram.png" alt="Instagram">
         </a>
       </div>
-    </section>
-  </main>
 
-  <footer>©VS Studio</footer>
-
-  <script>
-    const langMenu = document.getElementById('langMenu');
-
-    langMenu.addEventListener('click', (e) => {
-      e.stopPropagation();
-      langMenu.classList.toggle('active');
-    });
-
-    document.addEventListener('click', () => {
-      langMenu.classList.remove('active');
-    });
-  </script>
-
+      <div>©VS Studio</div>
+    </footer>
+  </div>
 </body>
 </html>
