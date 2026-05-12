@@ -42,7 +42,7 @@
 
     .vs-motion-bg {
       position: fixed;
-      inset: -42vh -42vw;
+      inset: -80vmax;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
@@ -64,7 +64,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 270vw;
+      width: max(360vw, 360vh);
       transform: translate(-50%, -50%) rotate(-18deg);
       transform-origin: center;
       z-index: 1;
@@ -72,7 +72,7 @@
 
     .vs-row {
       width: max-content;
-      margin: 22px 0;
+      margin: clamp(12px, 2.2vh, 24px) 0;
       overflow: visible;
     }
 
@@ -109,45 +109,14 @@
       color: rgba(255, 255, 255, 0.070);
     }
 
-    .vs-row:nth-child(1) .vs-track {
-      animation-duration: 58s;
-      animation-delay: -24s;
-    }
-
-    .vs-row:nth-child(2) .vs-track {
-      animation-duration: 48s;
-      animation-delay: -8s;
-    }
-
-    .vs-row:nth-child(3) .vs-track {
-      animation-duration: 64s;
-      animation-delay: -38s;
-    }
-
-    .vs-row:nth-child(4) .vs-track {
-      animation-duration: 52s;
-      animation-delay: -17s;
-    }
-
-    .vs-row:nth-child(5) .vs-track {
-      animation-duration: 68s;
-      animation-delay: -43s;
-    }
-
-    .vs-row:nth-child(6) .vs-track {
-      animation-duration: 55s;
-      animation-delay: -29s;
-    }
-
-    .vs-row:nth-child(7) .vs-track {
-      animation-duration: 61s;
-      animation-delay: -13s;
-    }
-
-    .vs-row:nth-child(8) .vs-track {
-      animation-duration: 50s;
-      animation-delay: -34s;
-    }
+    .vs-row:nth-child(1) .vs-track { animation-duration: 58s; animation-delay: -24s; }
+    .vs-row:nth-child(2) .vs-track { animation-duration: 48s; animation-delay: -8s; }
+    .vs-row:nth-child(3) .vs-track { animation-duration: 64s; animation-delay: -38s; }
+    .vs-row:nth-child(4) .vs-track { animation-duration: 52s; animation-delay: -17s; }
+    .vs-row:nth-child(5) .vs-track { animation-duration: 68s; animation-delay: -43s; }
+    .vs-row:nth-child(6) .vs-track { animation-duration: 55s; animation-delay: -29s; }
+    .vs-row:nth-child(7) .vs-track { animation-duration: 61s; animation-delay: -13s; }
+    .vs-row:nth-child(8) .vs-track { animation-duration: 50s; animation-delay: -34s; }
 
     .vs-row:nth-child(odd) .vs-set {
       color: rgba(255, 255, 255, 0.048);
@@ -174,13 +143,8 @@
     }
 
     @keyframes flowToUpperRight {
-      0% {
-        transform: translateX(-50%);
-      }
-
-      100% {
-        transform: translateX(0);
-      }
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     header {
@@ -289,9 +253,7 @@
       object-fit: cover;
       opacity: 0;
       transform: scale(1.018);
-      transition:
-        opacity 1.05s ease,
-        transform 5.8s ease;
+      transition: opacity 1.05s ease, transform 5.8s ease;
     }
 
     .slide.is-active {
@@ -314,10 +276,7 @@
       line-height: 1;
       cursor: pointer;
       opacity: 0;
-      transition:
-        opacity 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease;
+      transition: opacity 0.25s ease, background 0.25s ease, color 0.25s ease;
     }
 
     .office-slideshow:hover .slide-arrow {
@@ -353,10 +312,7 @@
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.28);
       cursor: pointer;
-      transition:
-        width 0.25s ease,
-        background 0.25s ease,
-        opacity 0.25s ease;
+      transition: width 0.25s ease, background 0.25s ease, opacity 0.25s ease;
     }
 
     .slide-dot:hover {
@@ -494,10 +450,6 @@
         max-width: 90vw;
       }
 
-      .slide-frame {
-        aspect-ratio: 14 / 9;
-      }
-
       .slide-dots {
         gap: 7px;
         margin-top: 12px;
@@ -535,11 +487,11 @@
       }
 
       .vs-motion-bg {
-        inset: -55vh -62vw;
+        inset: -95vmax;
       }
 
       .vs-tilt {
-        width: 340vw;
+        width: max(520vw, 520vh);
       }
 
       .vs-row {
@@ -606,11 +558,11 @@
       }
 
       .vs-motion-bg {
-        inset: -65vh -86vw;
+        inset: -110vmax;
       }
 
       .vs-tilt {
-        width: 440vw;
+        width: max(620vw, 620vh);
       }
 
       .vs-row {
@@ -762,6 +714,90 @@
               <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
               <span><em>V</em>ECTOR <em>S</em>HIFT</span>
               <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
             </div>
           </div>
         </div>
