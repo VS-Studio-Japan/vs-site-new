@@ -1,3 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VS Studio</title>
+  <meta name="description" content="VS Studio official website." />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vs-motion-bg {
+      position: fixed;
+      inset: -42vh -42vw;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .vs-motion-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.035) 0%, rgba(0, 0, 0, 0) 42%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.34));
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .vs-tilt {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 270vw;
+      transform: translate(-50%, -50%) rotate(-18deg);
+      transform-origin: center;
+      z-index: 1;
+    }
+
+    .vs-row {
+      width: max-content;
+      margin: 22px 0;
+      overflow: visible;
+    }
+
+    .vs-track {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+      animation-name: flowToUpperRight;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 50s;
+    }
+
     .vs-set {
       display: flex;
       align-items: center;
@@ -18,7 +102,47 @@
 
     .vs-set em {
       font-style: normal;
-      color: rgba(255, 255, 255, 0.076);
+      color: rgba(255, 255, 255, 0.070);
+    }
+
+    .vs-row:nth-child(1) .vs-track {
+      animation-duration: 58s;
+      animation-delay: -24s;
+    }
+
+    .vs-row:nth-child(2) .vs-track {
+      animation-duration: 48s;
+      animation-delay: -8s;
+    }
+
+    .vs-row:nth-child(3) .vs-track {
+      animation-duration: 64s;
+      animation-delay: -38s;
+    }
+
+    .vs-row:nth-child(4) .vs-track {
+      animation-duration: 52s;
+      animation-delay: -17s;
+    }
+
+    .vs-row:nth-child(5) .vs-track {
+      animation-duration: 68s;
+      animation-delay: -43s;
+    }
+
+    .vs-row:nth-child(6) .vs-track {
+      animation-duration: 55s;
+      animation-delay: -29s;
+    }
+
+    .vs-row:nth-child(7) .vs-track {
+      animation-duration: 61s;
+      animation-delay: -13s;
+    }
+
+    .vs-row:nth-child(8) .vs-track {
+      animation-duration: 50s;
+      animation-delay: -34s;
     }
 
     .vs-row:nth-child(odd) .vs-set {
@@ -34,13 +158,540 @@
     }
 
     .vs-row:nth-child(odd) .vs-set em {
-      color: rgba(255, 255, 255, 0.078);
-    }
-
-    .vs-row:nth-child(even) .vs-set em {
       color: rgba(255, 255, 255, 0.070);
     }
 
-    .vs-row:nth-child(3n) .vs-set em {
-      color: rgba(255, 255, 255, 0.082);
+    .vs-row:nth-child(even) .vs-set em {
+      color: rgba(255, 255, 255, 0.064);
     }
+
+    .vs-row:nth-child(3n) .vs-set em {
+      color: rgba(255, 255, 255, 0.074);
+    }
+
+    @keyframes flowToUpperRight {
+      0% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    header {
+      width: 100%;
+      background: transparent;
+      padding: 34px 42px 0;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: flex-end;
+      gap: 54px;
+      padding-right: 160px;
+    }
+
+    .site-logo {
+      display: block;
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .global-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding-bottom: 5px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+      white-space: nowrap;
+    }
+
+    .global-nav a {
+      transition: opacity 0.2s ease;
+    }
+
+    .global-nav a:hover {
+      opacity: 0.6;
+    }
+
+    .language {
+      position: absolute;
+      top: 34px;
+      right: 42px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      white-space: nowrap;
+    }
+
+    .language:hover {
+      opacity: 0.6;
+    }
+
+    main {
+      flex: 1;
+      min-height: calc(100vh - 190px);
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 32px 76px;
+      box-sizing: border-box;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 6;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder {
+      width: min(72vw, 920px);
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(0, 0, 0, 0.34);
+      backdrop-filter: blur(1px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.30);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .main-photo {
+      width: min(72vw, 920px);
+      height: auto;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    footer {
+      background: transparent;
+      padding: 32px 24px 26px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 10;
+    }
+
+    .social {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      opacity: 0.78;
+      transition: opacity 0.2s ease;
+    }
+
+    .social a:hover {
+      opacity: 1;
+    }
+
+    .social img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 900px) {
+      .header-main {
+        gap: 36px;
+        padding-right: 145px;
+      }
+
+      .site-logo {
+        width: 260px;
+      }
+
+      .global-nav {
+        gap: 22px;
+        font-size: 12px;
+      }
+
+      .vs-set {
+        gap: 56px;
+        padding-right: 56px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 28px 24px 0;
+      }
+
+      .header-main {
+        display: block;
+        padding-right: 0;
+      }
+
+      .site-logo {
+        width: 250px;
+      }
+
+      .language {
+        top: 30px;
+        right: 24px;
+        font-size: 12px;
+      }
+
+      .global-nav {
+        margin-top: 24px;
+        padding-bottom: 0;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+
+      main {
+        min-height: 560px;
+        padding: 64px 24px 72px;
+      }
+
+      .photo-placeholder,
+      .main-photo {
+        width: 86vw;
+      }
+
+      .vs-motion-bg {
+        inset: -55vh -62vw;
+      }
+
+      .vs-tilt {
+        width: 340vw;
+      }
+
+      .vs-row {
+        margin: 18px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 24px 20px 0;
+      }
+
+      .site-logo {
+        width: 210px;
+      }
+
+      .language {
+        top: 26px;
+        right: 20px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+
+      .global-nav {
+        margin-top: 22px;
+        gap: 16px;
+        font-size: 11px;
+      }
+
+      main {
+        min-height: 520px;
+        padding: 56px 20px 66px;
+      }
+
+      .photo-placeholder,
+      .main-photo {
+        width: 88vw;
+      }
+
+      .photo-placeholder {
+        font-size: 10px;
+      }
+
+      .vs-motion-bg {
+        inset: -65vh -86vw;
+      }
+
+      .vs-tilt {
+        width: 440vw;
+      }
+
+      .vs-row {
+        margin: 14px 0;
+      }
+
+      .vs-set {
+        gap: 40px;
+        padding-right: 40px;
+        font-size: clamp(48px, 16vw, 92px);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .site-logo {
+        width: 185px;
+      }
+
+      .language {
+        font-size: 10px;
+      }
+
+      .global-nav {
+        gap: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vs-track {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="vs-motion-bg" aria-hidden="true">
+      <div class="vs-tilt">
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ERSU<em>S</em></span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>IDEO GAME <em>S</em>OFTWARE R&amp;D</span>
+              <span><em>V</em>OLITION <em>S</em>HIFT</span>
+              <span><em>V</em>ERTICAL <em>S</em>LICE</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+              <span><em>V</em>ERSU<em>S</em></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-row">
+          <div class="vs-track">
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+            <div class="vs-set">
+              <span><em>V</em>ISIONARY <em>S</em>TANDARD</span>
+              <span><em>V</em>ISUAL <em>S</em>TRUCTURE</span>
+              <span><em>V</em>ITAL <em>S</em>PARK</span>
+              <span><em>V</em>ANGUARD <em>S</em>PIRIT</span>
+              <span><em>V</em>ARIABLE <em>S</em>YSTEM</span>
+              <span><em>V</em>ECTOR <em>S</em>HIFT</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <header>
+      <div class="header-main">
+        <a href="index.html" aria-label="VS Studio Home">
+          <img
+            src="vs-studio-logo-red-horizontal-snk.svg"
+            alt="VS Studio"
+            class="site-logo"
+          >
+        </a>
+
+        <nav class="global-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="recruit.html">Recruit</a>
+          <a href="contact.html">Contact</a>
+          <a href="access.html">Access</a>
+        </nav>
+      </div>
+
+      <a href="index.html" class="language">🌐 Japanese</a>
+    </header>
+
+    <main>
+      <div class="hero-content">
+        <div class="photo-placeholder">
+          Main Visual / Office Photo Area
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="social" aria-label="Official social media">
+        <a href="https://x.com/VS_Studio_Inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on X">
+          <img src="X.png" alt="X">
+        </a>
+
+        <a href="https://www.instagram.com/vs_studio_inc" target="_blank" rel="noopener noreferrer" aria-label="VS Studio on Instagram">
+          <img src="Instagram.png" alt="Instagram">
+        </a>
+      </div>
+
+      <div>©VS Studio</div>
+    </footer>
+
+  </div>
+</body>
+</html>
