@@ -27,6 +27,10 @@
       text-decoration: none;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     .page {
       min-height: 100vh;
       background: #000;
@@ -261,26 +265,106 @@
       justify-content: center;
     }
 
-    .photo-placeholder {
-      width: min(72vw, 920px);
-      aspect-ratio: 16 / 9;
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      background: rgba(0, 0, 0, 0.34);
-      backdrop-filter: blur(1px);
+    .office-slideshow {
+      width: min(74vw, 1040px);
+      position: relative;
+    }
+
+    .slide-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 14 / 9;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.018);
+      transition:
+        opacity 1.05s ease,
+        transform 5.8s ease;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 42px;
+      height: 64px;
+      border: none;
+      background: rgba(0, 0, 0, 0.22);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 34px;
+      font-weight: 300;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      transition:
+        opacity 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+    }
+
+    .office-slideshow:hover .slide-arrow {
+      opacity: 1;
+    }
+
+    .slide-arrow:hover {
+      background: rgba(0, 0, 0, 0.42);
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .slide-arrow.prev {
+      left: 0;
+    }
+
+    .slide-arrow.next {
+      right: 0;
+    }
+
+    .slide-dots {
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.30);
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      gap: 9px;
+      margin-top: 18px;
     }
 
-    .main-photo {
-      width: min(72vw, 920px);
-      height: auto;
-      display: block;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .slide-dot {
+      width: 7px;
+      height: 7px;
+      padding: 0;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.28);
+      cursor: pointer;
+      transition:
+        width 0.25s ease,
+        background 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+    .slide-dot:hover {
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .slide-dot.is-active {
+      width: 24px;
+      background: rgba(255, 255, 255, 0.86);
     }
 
     footer {
@@ -342,6 +426,10 @@
         gap: 56px;
         padding-right: 56px;
       }
+
+      .office-slideshow {
+        width: min(82vw, 940px);
+      }
     }
 
     @media (max-width: 760px) {
@@ -377,9 +465,15 @@
         padding: 64px 24px 72px;
       }
 
-      .photo-placeholder,
-      .main-photo {
-        width: 86vw;
+      .office-slideshow {
+        width: 88vw;
+      }
+
+      .slide-arrow {
+        opacity: 1;
+        width: 34px;
+        height: 54px;
+        font-size: 28px;
       }
 
       .vs-motion-bg {
@@ -422,13 +516,22 @@
         padding: 56px 20px 66px;
       }
 
-      .photo-placeholder,
-      .main-photo {
-        width: 88vw;
+      .office-slideshow {
+        width: 90vw;
       }
 
-      .photo-placeholder {
-        font-size: 10px;
+      .slide-dots {
+        gap: 7px;
+        margin-top: 15px;
+      }
+
+      .slide-dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .slide-dot.is-active {
+        width: 20px;
       }
 
       .vs-motion-bg {
@@ -467,6 +570,11 @@
     @media (prefers-reduced-motion: reduce) {
       .vs-track {
         animation: none;
+      }
+
+      .slide {
+        transition: none;
+        transform: none;
       }
     }
   </style>
@@ -672,9 +780,46 @@
 
     <main>
       <div class="hero-content">
-        <div class="photo-placeholder">
-          Main Visual / Office Photo Area
-        </div>
+
+        <section class="office-slideshow" aria-label="VS Studio Office Photo Slideshow">
+          <div class="slide-frame">
+            <img src="office_entrance.jpg" alt="VS Studio Office Entrance" class="slide is-active">
+            <img src="Office_01.jpg" alt="VS Studio Office 01" class="slide">
+            <img src="Office_02.jpg" alt="VS Studio Office 02" class="slide">
+            <img src="Office_03.jpg" alt="VS Studio Office 03" class="slide">
+            <img src="Office_04.jpg" alt="VS Studio Office 04" class="slide">
+            <img src="Office_05.jpg" alt="VS Studio Office 05" class="slide">
+            <img src="Office_06.jpg" alt="VS Studio Office 06" class="slide">
+            <img src="Office_07.jpg" alt="VS Studio Office 07" class="slide">
+            <img src="Office_08.jpg" alt="VS Studio Office 08" class="slide">
+            <img src="Office_09.jpg" alt="VS Studio Office 09" class="slide">
+            <img src="Office_10.jpg" alt="VS Studio Office 10" class="slide">
+            <img src="Office_11.jpg" alt="VS Studio Office 11" class="slide">
+            <img src="Office_12.jpg" alt="VS Studio Office 12" class="slide">
+            <img src="Office_13.jpg" alt="VS Studio Office 13" class="slide">
+
+            <button class="slide-arrow prev" type="button" aria-label="Previous photo">‹</button>
+            <button class="slide-arrow next" type="button" aria-label="Next photo">›</button>
+          </div>
+
+          <div class="slide-dots" aria-label="Select office photo">
+            <button class="slide-dot is-active" type="button" aria-label="Show photo 1"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 2"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 3"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 4"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 5"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 6"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 7"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 8"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 9"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 10"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 11"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 12"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 13"></button>
+            <button class="slide-dot" type="button" aria-label="Show photo 14"></button>
+          </div>
+        </section>
+
       </div>
     </main>
 
@@ -693,5 +838,70 @@
     </footer>
 
   </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".slide-dot");
+    const prevButton = document.querySelector(".slide-arrow.prev");
+    const nextButton = document.querySelector(".slide-arrow.next");
+    const slideshow = document.querySelector(".office-slideshow");
+
+    let currentSlide = 0;
+    let slideTimer = null;
+    const slideInterval = 5200;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function startSlideshow() {
+      stopSlideshow();
+      slideTimer = setInterval(nextSlide, slideInterval);
+    }
+
+    function stopSlideshow() {
+      if (slideTimer) {
+        clearInterval(slideTimer);
+      }
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        startSlideshow();
+      });
+    });
+
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+      startSlideshow();
+    });
+
+    prevButton.addEventListener("click", () => {
+      prevSlide();
+      startSlideshow();
+    });
+
+    slideshow.addEventListener("mouseenter", stopSlideshow);
+    slideshow.addEventListener("mouseleave", startSlideshow);
+
+    startSlideshow();
+  </script>
 </body>
 </html>
