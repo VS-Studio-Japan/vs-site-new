@@ -15,6 +15,12 @@
     .news-date { display: block; font-size: 12px; letter-spacing: 0.16em; color: rgba(255,255,255,0.55); margin-bottom: 18px; }
     .news-heading { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 18px; }
     .news-body { font-size: 14px; line-height: 1.9; letter-spacing: 0.04em; color: rgba(255,255,255,0.72); }
+
+    .news-item + .news-item { border-top: none; }
+    .news-body a { color: rgba(255,255,255,0.92); text-decoration: underline; text-underline-offset: 3px; }
+    .news-body a:hover { color: #fff; }
+    .video-wrap { width: 100%; margin-top: 24px; aspect-ratio: 16 / 9; background: #111; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; }
+    .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
     .back-link { display: inline-block; margin-top: 44px; border: 1px solid rgba(255,255,255,0.6); color: #fff; text-decoration: none; padding: 10px 24px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; transition: 0.2s; }
     .back-link:hover { background: #fff; color: #000; }
     footer { text-align: center; padding: 30px; font-size: 9px; color: rgba(255,255,255,0.35); position: relative; z-index: 2; }
@@ -203,11 +209,39 @@ header {
   <main>
     <section class="news-section">
       <h1 class="news-title">NEWS</h1>
+
+      <article class="news-item">
+        <time class="news-date" datetime="2026-05-14">2026.05.14</time>
+        <h2 class="news-heading">X（Twitter）アカウント集約のお知らせ</h2>
+        <p class="news-body">
+          VS StudioのX（Twitter）アカウントは、今後
+          <a href="https://x.com/VS_Studio_Inc" target="_blank" rel="noopener noreferrer">@VS_Studio_Inc</a>
+          に集約されます。
+        </p>
+      </article>
+
+      <article class="news-item">
+        <time class="news-date" datetime="2026-05-13">2026.05.13</time>
+        <h2 class="news-heading">新スタジオ「VS Studio SNK」発表動画を公開しました。</h2>
+        <p class="news-body">
+          Katsuhiro Haradaからのメッセージ動画「New Studio “VS Studio SNK” Announced | A Message from Katsuhiro Harada」を公開しました。
+        </p>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/SF5VDtpBEkU"
+            title="New Studio “VS Studio SNK” Announced | A Message from Katsuhiro Harada"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+
       <article class="news-item">
         <time class="news-date" datetime="2026-05-01">2026.05.01</time>
         <h2 class="news-heading">VS Studioを設立しました。</h2>
         <p class="news-body">2026年5月1日、VS Studioを設立しました。</p>
       </article>
+
       <a href="index.html" class="back-link">Back to Home</a>
     </section>
   </main>
