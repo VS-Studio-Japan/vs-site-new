@@ -876,6 +876,121 @@ header {
   .global-nav { gap: 14px; }
 }
 
+
+/* Important notice block on the home page */
+.hero-content {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.important-notice {
+  width: min(74vw, 1040px);
+  box-sizing: border-box;
+  padding: 22px 28px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+  text-align: left;
+}
+
+.important-notice-title {
+  margin: 0 0 12px;
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.45;
+  letter-spacing: 0.10em;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.important-notice-text {
+  margin: 0;
+  font-size: clamp(12px, 1.02vw, 15px);
+  line-height: 1.82;
+  letter-spacing: 0.045em;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.important-notice-text a {
+  color: rgba(255, 255, 255, 0.96);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.important-notice-text a:hover {
+  opacity: 0.65;
+}
+
+@media (max-width: 900px) {
+  .important-notice {
+    width: min(82vw, 940px);
+  }
+}
+
+@media (max-width: 760px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .page {
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  main {
+    padding: 26px 20px 28px;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    height: auto;
+    gap: 18px;
+  }
+
+  .important-notice {
+    width: 90vw;
+    padding: 18px 18px 20px;
+  }
+
+  .important-notice-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+
+  .important-notice-text {
+    font-size: 11.5px;
+    line-height: 1.72;
+    letter-spacing: 0.025em;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 24px 18px 26px;
+  }
+
+  .important-notice {
+    width: 91vw;
+    padding: 16px 16px 18px;
+  }
+
+  .important-notice-title {
+    font-size: 13px;
+  }
+
+  .important-notice-text {
+    font-size: 10.8px;
+    line-height: 1.68;
+  }
+}
+
   </style>
 </head>
 
@@ -1049,6 +1164,16 @@ header {
 
     <main>
       <div class="hero-content">
+
+        <section class="important-notice" aria-label="Important Notice">
+          <h2 class="important-notice-title">Important Notice</h2>
+          <p class="important-notice-text">
+            We have received a large number of inquiries regarding recruitment at VS Studio.<br>
+            VS Studio is a subsidiary of SNK; however, it is an independent studio and is not a wholly owned subsidiary of SNK.<br>
+            Therefore, for recruitment and other inquiries, please contact us through <a href="en-contact.html">this page</a> on the official VS Studio website, rather than contacting SNK directly.<br>
+            Thank you for your understanding.
+          </p>
+        </section>
 
         <section class="office-slideshow" aria-label="VS Studio Office Photo Slideshow">
           <div class="slide-frame">
