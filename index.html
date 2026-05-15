@@ -991,6 +991,44 @@ header {
   }
 }
 
+
+/* Simple app-style update badge for NEWS */
+.global-nav a.news-alert {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 1;
+}
+
+.global-nav a.news-alert::after {
+  content: "NEW";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 15px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #d71920;
+  color: #fff;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(215, 25, 32, 0.45);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .global-nav a.news-alert::after {
+    min-width: 24px;
+    height: 13px;
+    padding: 0 4px;
+    font-size: 7px;
+  }
+}
+
   </style>
 </head>
 
@@ -1143,7 +1181,7 @@ header {
 
         <nav class="global-nav" aria-label="Main navigation">
           <a href="index.html" class="active">HOME</a>
-          <a href="news.html">NEWS</a>
+          <a href="news.html" class="news-alert">NEWS</a>
           <a href="recruit.html">RECRUIT</a>
           <a href="access.html">ACCESS</a>
           <a href="contact.html">CONTACT</a>
