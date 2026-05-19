@@ -735,21 +735,23 @@
     }
 
     .slide.pan-ltr .slide-photo {
-      background-size: auto 100%;
-      background-position: left center;
+      /* Zoomed-in panoramic scan for the flower photo.
+         Keep the zoom fixed, and move only from left to right. */
+      background-size: auto 132%;
+      background-position: left 48%;
       will-change: background-position;
     }
 
     .slide.pan-ltr.is-active .slide-photo {
-      animation: panLeftToRight 8s ease-in-out forwards;
+      animation: panLeftToRight 10s linear forwards;
     }
 
     @keyframes panLeftToRight {
       0% {
-        background-position: left center;
+        background-position: left 48%;
       }
       100% {
-        background-position: right center;
+        background-position: right 48%;
       }
     }
 
@@ -1258,7 +1260,7 @@ header {
             </div>
 
 
-            <div class="slide pan-ltr" data-interval="8000">
+            <div class="slide pan-ltr" data-interval="10000">
               <div class="slide-photo" style="background-image: url('/FLOWERS_PLANTS_WIDE.png');" role="img" aria-label="Opening flowers and plants for VS Studio wide view"></div>
             </div>
 
