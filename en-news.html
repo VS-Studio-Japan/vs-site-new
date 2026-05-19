@@ -16,6 +16,9 @@
     .news-heading { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 18px; }
     .news-body { font-size: 14px; line-height: 1.9; letter-spacing: 0.04em; color: rgba(255,255,255,0.72); }
 
+    .news-photo { width: 100%; margin-top: 24px; border: 1px solid rgba(255,255,255,0.12); background: #111; overflow: hidden; }
+    .news-photo img { display: block; width: 100%; height: auto; }
+
     .news-item + .news-item { border-top: none; }
     .news-body a { color: rgba(255,255,255,0.92); text-decoration: underline; text-underline-offset: 3px; }
     .news-body a:hover { color: #fff; }
@@ -209,6 +212,21 @@ header {
   <main>
     <section class="news-section">
       <h1 class="news-title">NEWS</h1>
+
+      <article class="news-item">
+        <time class="news-date" datetime="2026-05-19">May 19, 2026</time>
+        <h2 class="news-heading">Thank You for Your Warm Congratulations</h2>
+        <p class="news-body">
+          In celebration of the opening of VS Studio, we have received many beautiful flowers and plants from so many people.<br>
+          We would like to express our sincere gratitude.<br>
+          Encouraged by your warm support, we will devote ourselves sincerely to game development from here onward.<br><br>
+          We sincerely appreciate your continued support of VS Studio.
+        </p>
+        <div class="news-photo">
+          <img src="FLOWERS_PLANTS_WIDE.png" alt="Flowers and plants sent in celebration of the opening of VS Studio">
+        </div>
+      </article>
+
 
       <article class="news-item">
         <time class="news-date" datetime="2026-05-16">May 16, 2026</time>
