@@ -718,6 +718,34 @@
       }
     }
 
+
+    .slide.flowers-still img {
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .slide.pan-ltr img {
+      width: 118%;
+      max-width: none;
+      object-fit: cover;
+      object-position: left center;
+      transform: translateX(0);
+      will-change: transform;
+    }
+
+    .slide.pan-ltr.is-active img {
+      animation: panLeftToRight 8s ease-in-out forwards;
+    }
+
+    @keyframes panLeftToRight {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-15.25%);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .vs-track {
         animation: none;
@@ -726,6 +754,11 @@
       .slide {
         transition: none;
         transform: none;
+      }
+
+      .slide.pan-ltr.is-active img {
+        animation: none;
+        transform: translateX(0);
       }
     }
   
@@ -1216,7 +1249,14 @@ header {
         <section class="office-slideshow" aria-label="VS Studio Office Photo Slideshow">
           <div class="slide-frame">
 
-            <div class="slide intro-slide is-active">
+            <div class="slide flowers-still is-active" data-interval="4500"><img src="FLOWERS_PLANTS.png" alt="Opening flowers and plants for VS Studio"></div>
+
+
+            <div class="slide pan-ltr" data-interval="8000"><img src="FLOWERS_PLANTS_WIDE.png" alt="Opening flowers and plants for VS Studio wide view"></div>
+
+
+
+            <div class="slide intro-slide" data-interval="4500">
               <div class="intro-content">
                 <div class="intro-kicker">VS Studio</div>
 
@@ -1252,23 +1292,7 @@ header {
             <button class="slide-arrow next" type="button" aria-label="Next photo">›</button>
           </div>
 
-          <div class="slide-dots" aria-label="Select office photo">
-            <button class="slide-dot is-active" type="button" aria-label="Show slide 1"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 2"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 3"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 4"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 5"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 6"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 7"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 8"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 9"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 10"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 11"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 12"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 13"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 14"></button>
-            <button class="slide-dot" type="button" aria-label="Show slide 15"></button>
-          </div>
+          <div class="slide-dots" aria-label="Select office photo"></div>
         </section>
 
       </div>
@@ -1307,25 +1331,69 @@ header {
 
   <script>
     const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".slide-dot");
+    const dotsContainer = document.querySelector(".slide-dots");
     const prevButton = document.querySelector(".slide-arrow.prev");
     const nextButton = document.querySelector(".slide-arrow.next");
     const slideshow = document.querySelector(".office-slideshow");
 
+    let dots = [];
     let currentSlide = 0;
     let slideTimer = null;
-    const slideInterval = 4500;
+    const defaultSlideInterval = 4500;
+
+    function getSlideInterval(slide) {
+      const value = parseInt(slide.getAttribute("data-interval"), 10);
+      return Number.isFinite(value) && value > 0 ? value : defaultSlideInterval;
+    }
+
+    function buildDots() {
+      if (!dotsContainer) return;
+
+      dotsContainer.innerHTML = "";
+
+      slides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.className = "slide-dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Show slide ${index + 1}`);
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          startSlideshow();
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      dots = Array.from(dotsContainer.querySelectorAll(".slide-dot"));
+    }
 
     function showSlide(index) {
       currentSlide = (index + slides.length) % slides.length;
 
       slides.forEach((slide, i) => {
-        slide.classList.toggle("is-active", i === currentSlide);
+        const isActive = i === currentSlide;
+        slide.classList.toggle("is-active", isActive);
+
+        if (slide.classList.contains("pan-ltr")) {
+          const image = slide.querySelector("img");
+          if (image) {
+            image.style.animation = "none";
+            image.offsetHeight;
+            image.style.animation = "";
+          }
+        }
       });
 
       dots.forEach((dot, i) => {
         dot.classList.toggle("is-active", i === currentSlide);
       });
+    }
+
+    function scheduleNextSlide() {
+      stopSlideshow();
+      slideTimer = setTimeout(() => {
+        nextSlide();
+        scheduleNextSlide();
+      }, getSlideInterval(slides[currentSlide]));
     }
 
     function nextSlide() {
@@ -1337,36 +1405,32 @@ header {
     }
 
     function startSlideshow() {
-      stopSlideshow();
-      slideTimer = setInterval(nextSlide, slideInterval);
+      scheduleNextSlide();
     }
 
     function stopSlideshow() {
       if (slideTimer) {
-        clearInterval(slideTimer);
+        clearTimeout(slideTimer);
+        slideTimer = null;
       }
     }
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        showSlide(index);
+    if (prevButton && nextButton && slideshow) {
+      nextButton.addEventListener("click", () => {
+        nextSlide();
         startSlideshow();
       });
-    });
 
-    nextButton.addEventListener("click", () => {
-      nextSlide();
-      startSlideshow();
-    });
+      prevButton.addEventListener("click", () => {
+        prevSlide();
+        startSlideshow();
+      });
 
-    prevButton.addEventListener("click", () => {
-      prevSlide();
-      startSlideshow();
-    });
+      slideshow.addEventListener("mouseenter", stopSlideshow);
+      slideshow.addEventListener("mouseleave", startSlideshow);
+    }
 
-    slideshow.addEventListener("mouseenter", stopSlideshow);
-    slideshow.addEventListener("mouseleave", startSlideshow);
-
+    buildDots();
     showSlide(0);
     startSlideshow();
   </script>
