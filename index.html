@@ -1033,40 +1033,6 @@ header {
   }
 }
 
-
-/* Small update badge for NEWS and MEDIA */
-.global-nav a.news-alert,
-.global-nav a.media-alert {
-  position: relative;
-}
-
-.global-nav a.news-alert::after,
-.global-nav a.media-alert::after {
-  content: "NEW";
-  position: absolute;
-  top: -14px;
-  right: -24px;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: #d71920;
-  color: #fff;
-  font-size: 8px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  box-shadow: 0 0 12px rgba(215, 25, 32, 0.55);
-}
-
-@media (max-width: 480px) {
-  .global-nav a.news-alert::after,
-  .global-nav a.media-alert::after {
-    top: -12px;
-    right: -21px;
-    font-size: 7px;
-    padding: 2px 5px;
-  }
-}
-
   </style>
 </head>
 
@@ -1219,8 +1185,8 @@ header {
 
         <nav class="global-nav" aria-label="Main navigation">
           <a href="index.html" class="active">HOME</a>
-          <a href="news.html" class="news-alert">NEWS</a>
-          <a href="media.html" class="media-alert">MEDIA</a>
+          <a href="news.html">NEWS</a>
+          <a href="media.html">MEDIA</a>
           <a href="recruit.html">RECRUIT</a>
           <a href="access.html">ACCESS</a>
           <a href="contact.html">CONTACT</a>
