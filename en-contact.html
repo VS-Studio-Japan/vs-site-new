@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VS Studio - CONTACT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONTACT | VS Studio</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
 
     html, body {
       width: 100%;
       min-height: 100%;
       background: #000;
       color: #fff;
-      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-family: Arial, sans-serif;
       overflow-x: hidden;
-      font-size: 14px;
     }
 
     body {
@@ -28,97 +22,106 @@
       min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     header {
       width: 100%;
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+      background: transparent;
+      padding: 34px 42px 0;
+      box-sizing: border-box;
       position: relative;
+      z-index: 10;
+      flex-shrink: 0;
+      display: block;
     }
 
-    .header-left {
+    .header-main {
       display: flex;
-      flex-direction: column;
+      align-items: flex-end;
+      gap: 54px;
+      padding-right: 160px;
+    }
+
+    .site-logo {
+      display: block;
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .global-nav {
+      display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.35em;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      gap: 30px;
+      padding-bottom: 5px;
       font-size: 13px;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
     }
 
-    nav a {
-      color: #fff;
+    .global-nav a {
+      color: inherit;
       text-decoration: none;
-      opacity: 0.45;
-      transition: 0.3s;
+      opacity: 0.82;
+      transition: opacity 0.2s ease;
     }
 
-    nav a.active,
-    nav a:hover {
+    .global-nav a.active,
+    .global-nav a:hover {
       opacity: 1;
     }
 
     .lang-dropdown {
-      position: relative;
+      position: absolute;
+      top: 34px;
+      right: 42px;
       cursor: pointer;
+      z-index: 100;
     }
 
     .lang-button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border: 1px solid #fff;
-      border-radius: 25px;
-      font-size: 12px;
-      color: #fff;
-      background: #000;
-      transition: 0.3s;
+      gap: 7px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
     }
 
-    .lang-button:hover {
-      background: #fff;
-      color: #000;
-    }
+    .lang-button:hover { opacity: 0.6; }
 
-    .icon-globe {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      flex-shrink: 0;
+    .globe-icon {
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1;
     }
 
     .dropdown-content {
       position: absolute;
-      top: 110%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 160%;
+      right: 0;
       background: #111;
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
-      min-width: 120px;
+      min-width: 128px;
       display: none;
       z-index: 100;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      overflow: hidden;
     }
 
     .dropdown-content a {
@@ -128,50 +131,64 @@
       display: block;
       font-size: 12px;
       text-align: center;
-      transition: 0.2s;
+      transition: background 0.2s ease;
+      opacity: 1;
     }
 
-    .dropdown-content a:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .lang-dropdown.active .dropdown-content {
-      display: block;
-    }
-
-    @media (min-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 40px 60px;
-      }
-
-      .header-left {
-        align-items: flex-start;
-      }
-
-      .logo {
-        font-size: 39px;
-      }
-
-      nav {
-        font-size: 16px;
-        gap: 30px;
-        justify-content: flex-start;
-      }
-
-      .dropdown-content {
-        left: auto;
-        right: 0;
-        transform: none;
-      }
-    }
+    .dropdown-content a:hover { background: rgba(255,255,255,0.1); }
+    .lang-dropdown.active .dropdown-content { display: block; }
 
     main {
       flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 24px 56px;
+    }
+
+    .contact-section {
       width: 100%;
-      padding: 40px 20px;
+      max-width: 720px;
+      color: rgba(255,255,255,0.84);
+      letter-spacing: 0.06em;
+      line-height: 2;
+      text-align: left;
+    }
+
+    .page-title {
+      margin-bottom: 34px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: #fff;
+      text-align: center;
+    }
+
+    .contact-notice {
+      margin: 0 auto 42px;
+      padding: 24px 26px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-left: 4px solid rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.075);
+      color: rgba(255,255,255,0.96);
+      font-size: 14px;
+      line-height: 2;
+      letter-spacing: 0.06em;
+    }
+
+    .contact-notice a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .contact-notice .notice-sub {
+      display: block;
+      margin-top: 14px;
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      line-height: 1.9;
     }
 
     .contact-container {
@@ -180,23 +197,17 @@
       text-align: center;
     }
 
-    h1 {
-      letter-spacing: 4px;
-      font-weight: normal;
-      margin-bottom: 40px;
-      font-size: 28px;
-    }
-
     .form-group {
       margin-bottom: 30px;
       text-align: left;
     }
 
-    label {
+    .form-group label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
       line-height: 1.5;
+      color: rgba(255,255,255,0.88);
     }
 
     input[type="text"],
@@ -216,9 +227,11 @@
       border-radius: 0;
     }
 
-    .radio-group {
-      margin-top: 10px;
-    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus { border-color: rgba(255,255,255,0.72); }
+
+    .radio-group { margin-top: 10px; }
 
     .radio-item {
       margin-bottom: 12px;
@@ -243,7 +256,7 @@
       line-height: 1.5;
     }
 
-    button {
+    .contact-submit-button {
       width: 100%;
       padding: 15px;
       background-color: #fff;
@@ -257,20 +270,34 @@
       -webkit-appearance: none;
       appearance: none;
       border-radius: 0;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
     }
 
-    button:hover {
-      background-color: #ccc;
+    .contact-submit-button:hover { background-color: #ccc; }
+    .contact-submit-button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    #thanks_message {
+      display: none;
+      padding: 40px;
+      border: 1px solid #333;
+      margin-top: 50px;
+      text-align: center;
     }
 
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    #thanks_message h2 {
+      margin-bottom: 24px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: #fff;
     }
+
+    .home-button { width: auto; padding: 10px 40px; }
+
+    .back-link-wrap { margin-top: 56px; text-align: center; }
 
     .back-link {
       display: inline-block;
-      margin-top: 24px;
       border: 1px solid rgba(255,255,255,0.6);
       color: #fff;
       text-decoration: none;
@@ -281,22 +308,7 @@
       transition: 0.2s;
     }
 
-    .back-link:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    #thanks_message {
-      display: none;
-      padding: 40px;
-      border: 1px solid #333;
-      margin-top: 50px;
-    }
-
-    .home-button {
-      width: auto;
-      padding: 10px 40px;
-    }
+    .back-link:hover { background: #fff; color: #000; }
 
     footer {
       text-align: center;
@@ -304,258 +316,163 @@
       font-size: 9px;
       color: rgba(255,255,255,0.35);
     }
-  
 
-/* Unified VS Studio header */
-header {
-  width: 100%;
-  background: transparent;
-  padding: 34px 42px 0;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 10;
-  flex-shrink: 0;
-  display: block;
-}
+    @media (max-width: 900px) {
+      .header-main { gap: 36px; padding-right: 145px; }
+      .site-logo { width: 260px; }
+      .global-nav { gap: 22px; font-size: 12px; }
+    }
 
-.header-main {
-  display: flex;
-  align-items: flex-end;
-  gap: 54px;
-  padding-right: 160px;
-}
+    @media (max-width: 760px) {
+      header { padding: 28px 24px 0; }
+      .header-main { display: block; padding-right: 0; }
+      .site-logo { width: 250px; }
+      .lang-dropdown { top: 30px; right: 24px; }
+      .lang-button { font-size: 12px; }
+      .global-nav {
+        margin-top: 24px;
+        padding-bottom: 0;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+      main { padding: 58px 24px 48px; }
+      .page-title { font-size: 20px; }
+      .contact-notice { padding: 22px 20px; font-size: 13px; }
+    }
 
-.site-logo {
-  display: block;
-  width: 300px;
-  height: auto;
-  flex-shrink: 0;
-}
+    @media (max-width: 480px) {
+      header { padding: 24px 20px 0; }
+      .site-logo { width: 210px; }
+      .lang-dropdown { top: 26px; right: 20px; }
+      .lang-button { font-size: 11px; letter-spacing: 0.06em; }
+      .global-nav { margin-top: 22px; gap: 16px; font-size: 11px; }
+      main { padding: 48px 22px; }
+      .contact-section { letter-spacing: 0.04em; }
+      .page-title { margin-bottom: 26px; font-size: 18px; }
+      .contact-notice { margin-bottom: 34px; padding: 20px 18px; }
+    }
 
-.global-nav {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  padding-bottom: 5px;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.82);
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-}
-
-.global-nav a {
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.82;
-  transition: opacity 0.2s ease;
-}
-
-.global-nav a.active,
-.global-nav a:hover {
-  opacity: 1;
-}
-
-.lang-dropdown {
-  position: absolute;
-  top: 34px;
-  right: 42px;
-  cursor: pointer;
-  z-index: 100;
-}
-
-.lang-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-}
-
-.lang-button:hover { opacity: 0.6; }
-
-.globe-icon {
-  display: inline-block;
-  font-size: 13px;
-  line-height: 1;
-}
-
-.dropdown-content {
-  position: absolute;
-  top: 160%;
-  right: 0;
-  background: #111;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 12px;
-  min-width: 128px;
-  display: none;
-  z-index: 100;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  overflow: hidden;
-}
-
-.dropdown-content a {
-  color: #fff;
-  padding: 12px;
-  text-decoration: none;
-  display: block;
-  font-size: 12px;
-  text-align: center;
-  transition: background 0.2s ease;
-  opacity: 1;
-}
-
-.dropdown-content a:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-.lang-dropdown.active .dropdown-content {
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .header-main { gap: 36px; padding-right: 145px; }
-  .site-logo { width: 260px; }
-  .global-nav { gap: 22px; font-size: 12px; }
-}
-
-@media (max-width: 760px) {
-  header { padding: 28px 24px 0; }
-  .header-main { display: block; padding-right: 0; }
-  .site-logo { width: 250px; }
-  .lang-dropdown { top: 30px; right: 24px; }
-  .lang-button { font-size: 12px; }
-  .global-nav { margin-top: 24px; padding-bottom: 0; gap: 20px; flex-wrap: wrap; font-size: 12px; }
-}
-
-@media (max-width: 480px) {
-  header { padding: 24px 20px 0; }
-  .site-logo { width: 210px; }
-  .lang-dropdown { top: 26px; right: 20px; }
-  .lang-button { font-size: 11px; letter-spacing: 0.06em; }
-  .global-nav { margin-top: 22px; gap: 16px; font-size: 11px; }
-}
-
-@media (max-width: 360px) {
-  .site-logo { width: 185px; }
-  .lang-button { font-size: 10px; }
-  .global-nav { gap: 14px; }
-}
+    @media (max-width: 360px) {
+      .site-logo { width: 185px; }
+      .lang-button { font-size: 10px; }
+      .global-nav { gap: 14px; }
+    }
 
   </style>
   <link rel="preconnect" href="https://challenges.cloudflare.com">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
+
 <body>
 
   <header>
-      <div class="header-main">
-        <a href="en.html" aria-label="VS Studio Home">
-          <img
-            src="vs-studio-logo-red-horizontal-snk.svg"
-            alt="VS Studio"
-            class="site-logo"
-          >
-        </a>
+    <div class="header-main">
+      <a href="en.html" aria-label="VS Studio Home">
+        <img
+          src="vs-studio-logo-red-horizontal-snk.svg"
+          alt="VS Studio"
+          class="site-logo"
+        >
+      </a>
 
-        <nav class="global-nav" aria-label="Main navigation">
-          <a href="en.html">HOME</a>
-          <a href="en-news.html">NEWS</a>
-          <a href="en-recruit.html">RECRUIT</a>
-          <a href="en-access.html">ACCESS</a>
-          <a href="en-contact.html" class="active">CONTACT</a>
-        </nav>
+      <nav class="global-nav" aria-label="Main navigation">
+        <a href="en.html">HOME</a>
+        <a href="en-news.html">NEWS</a>
+        <a href="en-recruit.html">RECRUIT</a>
+        <a href="en-access.html">ACCESS</a>
+        <a href="en-contact.html" class="active">CONTACT</a>
+      </nav>
+    </div>
+
+    <div class="lang-dropdown" id="langMenu">
+      <div class="lang-button" aria-label="Language selector">
+        <span class="globe-icon">🌐</span>
+        <span>English</span>
       </div>
-
-      <div class="lang-dropdown" id="langMenu">
-        <div class="lang-button" aria-label="Language selector">
-          <span class="globe-icon">🌐</span>
-          <span>English</span>
-        </div>
-        <div class="dropdown-content">
-          <a href="contact.html">Japanese</a>
-          <a href="en-contact.html">English</a>
-        </div>
-      </div>
-    </header>
-
-  <main>
-    <div class="contact-container">
-      <div id="form_area">
-        <h1>CONTACT</h1>
-
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleContactSubmit();">
-          
-          <div class="form-group">
-            <label>Name *</label>
-            <input type="text" name="entry.1207021558" required>
-          </div>
-          
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" name="entry.1665471310" required>
-          </div>
-          
-          <div class="form-group">
-            <label>Inquiry Type *</label>
-            <div class="radio-group">
-              <div class="radio-item">
-                <input type="radio" name="entry.267130849" value="採用に関するお問い合わせ" id="t1" required>
-                <label for="t1">Recruitment</label>
-              </div>
-
-              <div class="radio-item">
-                <input type="radio" name="entry.267130849" value="取材に関するお問い合わせ" id="t2">
-                <label for="t2">Media / Interview</label>
-              </div>
-
-              <div class="radio-item">
-                <input type="radio" name="entry.267130849" value="その他" id="t3">
-                <label for="t3">Other</label>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label>Message *</label>
-            <textarea name="entry.1661004559" rows="5" required></textarea>
-          </div>
-
-          <div
-            class="cf-turnstile"
-            data-sitekey="0x4AAAAAADMqOJK21AWBxxqR"
-            data-action="contact"
-            data-callback="turnstileSuccess"
-            data-expired-callback="turnstileExpired"
-            data-error-callback="turnstileExpired">
-          </div>
-
-          <p id="turnstile-error" style="display:none; color:#ff6b6b; font-size:12px; text-align:center; margin:10px 0 0;">
-            Human verification has not been completed. Please wait a moment and try again.
-          </p>
-          
-          <button type="submit" id="submit-button" disabled>SEND MESSAGE</button>
-        </form>
-
-        <a href="en.html" class="back-link">BACK TO HOME</a>
-      </div>
-
-      <div id="thanks_message">
-        <h1>THANK YOU</h1>
-        <p>Your inquiry has been submitted successfully.</p>
-        <button class="home-button" onclick="window.location.href='en.html';">BACK TO HOME</button>
+      <div class="dropdown-content">
+        <a href="contact.html">Japanese</a>
+        <a href="en-contact.html">English</a>
       </div>
     </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <h1 class="page-title">CONTACT</h1>
+
+        <div class="contact-notice">
+          At VS Studio, ahead of the full-scale launch of formal recruitment activities, the principal recruitment positions planned for the current term have been filled.<br>
+          The next round of new recruitment is expected to begin in 2027 or later.
+          <span class="notice-sub">Please note that, depending on the nature of the inquiry, we may not be able to respond to every message.</span>
+        </div>
+
+        <div class="contact-container">
+          <div id="form_area">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleContactSubmit();">
+              <div class="form-group">
+                <label>Name *</label>
+                <input type="text" name="entry.1207021558" required>
+              </div>
+
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="entry.1665471310" required>
+              </div>
+
+              <div class="form-group">
+                <label>Inquiry Type *</label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="採用に関するお問い合わせ" id="t1" required>
+                    <label for="t1">Recruitment</label>
+                  </div>
+
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="取材に関するお問い合わせ" id="t2">
+                    <label for="t2">Media / Interview</label>
+                  </div>
+
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="その他" id="t3">
+                    <label for="t3">Other</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Message *</label>
+                <textarea name="entry.1661004559" rows="5" required></textarea>
+              </div>
+
+              <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAADMqOJK21AWBxxqR"
+                data-action="contact"
+                data-callback="turnstileSuccess"
+                data-expired-callback="turnstileExpired"
+                data-error-callback="turnstileExpired">
+              </div>
+
+              <p id="turnstile-error" style="display:none; color:#ff6b6b; font-size:12px; text-align:center; margin:10px 0 0;">
+                Human verification has not been completed. Please wait a moment and try again.
+              </p>
+
+              <button type="submit" id="submit-button" class="contact-submit-button" disabled>SEND MESSAGE</button>
+            </form>
+          </div>
+
+          <div id="thanks_message">
+            <h2>THANK YOU</h2>
+            <p>Your inquiry has been submitted successfully.</p>
+            <button class="contact-submit-button home-button" onclick="window.location.href='en.html';">BACK TO HOME</button>
+          </div>
+        </div>
+
+      <div class="back-link-wrap">
+        <a href="en.html" class="back-link">Back to Home</a>
+      </div>
+    </section>
   </main>
 
   <footer>© 2026 VS STUDIO</footer>
