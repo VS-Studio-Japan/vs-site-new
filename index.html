@@ -69,6 +69,44 @@
     .social { margin-bottom:24px; display:flex; align-items:center; justify-content:center; gap:22px; } .social a{display:inline-flex; width:26px; height:26px; opacity:.78;} .social img{display:block; max-width:100%; max-height:100%; object-fit:contain;}
     @media (max-width:900px){ .header-main{gap:36px;padding-right:145px;} .site-logo{width:260px;} .global-nav{gap:22px;font-size:12px;} .office-slideshow,.important-notice{width:min(82vw,940px);} }
     @media (max-width:760px){ html,body{height:100svh;min-height:100svh;overflow:hidden;} .page{height:100svh;min-height:100svh;overflow:hidden;} header{padding:18px 20px 0;} .header-main{display:block;padding-right:0;} .site-logo{width:220px;} .lang-dropdown{top:22px;right:20px;font-size:10px;} .global-nav{margin-top:18px;gap:18px;font-size:11px;letter-spacing:.12em;overflow-x:auto;} main{min-height:0;padding:14px 20px 12px;} .hero-content{gap:14px;} .important-notice{width:90vw;font-size:10.5px;line-height:1.55;padding:12px 14px;} .office-slideshow{width:min(90vw, calc((100svh - 300px) * 1.55));max-width:90vw;} .intro-content{width:92%;padding:28px 18px;} .intro-kicker{font-size:9px;letter-spacing:.26em;margin-bottom:12px;} .intro-title{font-size:clamp(22px,5.6vw,30px);line-height:1.26;letter-spacing:.065em;margin-bottom:18px;} .intro-divider{width:48px;margin-bottom:18px;} .intro-text{font-size:clamp(10.5px,2.9vw,13.5px);line-height:1.58;letter-spacing:.018em;} .slide-arrow{opacity:1;width:30px;height:48px;font-size:26px;} footer{padding:10px 20px 12px;font-size:10px;} .social{margin-bottom:8px;} }
+
+
+    /* Mobile nav fit adjustment: place NEW above RECRUIT and reduce horizontal width */
+    @media (max-width:760px){
+      .global-nav{
+        width:100%;
+        box-sizing:border-box;
+        justify-content:space-between;
+        gap:0;
+        overflow:visible;
+        padding-top:16px;
+        padding-right:0;
+        font-size:10px;
+        letter-spacing:.09em;
+      }
+      .global-nav a{
+        flex:0 1 auto;
+      }
+      .global-nav a.recruit-alert{
+        padding-right:0;
+        position:relative;
+      }
+      .global-nav a.recruit-alert::after{
+        top:-16px;
+        left:50%;
+        right:auto;
+        transform:translateX(-50%);
+        font-size:7px;
+        padding:2px 6px;
+      }
+    }
+
+    @media (max-width:380px){
+      .global-nav{
+        font-size:9.2px;
+        letter-spacing:.075em;
+      }
+    }
   </style>
 </head>
 <body>
