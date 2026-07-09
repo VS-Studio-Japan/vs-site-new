@@ -79,6 +79,38 @@ header {
   opacity: 1;
 }
 
+    /* Small update badge for RECRUIT */
+    .global-nav a.recruit-alert {
+      position: relative;
+      color: #fff;
+    }
+
+    .global-nav a.recruit-alert::after {
+      content: "NEW";
+      position: absolute;
+      top: -14px;
+      right: -24px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #d71920;
+      color: #fff;
+      font-size: 8px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(215, 25, 32, 0.55);
+    }
+
+    @media (max-width: 480px) {
+      .global-nav a.recruit-alert::after {
+        top: -12px;
+        right: -21px;
+        font-size: 7px;
+        padding: 2px 5px;
+      }
+    }
+
+
 .lang-dropdown {
   position: absolute;
   top: 34px;
@@ -190,7 +222,7 @@ header {
           <a href="index.html">HOME</a>
           <a href="news.html">NEWS</a>
           <a href="media.html" class="active">MEDIA</a>
-          <a href="recruit.html">RECRUIT</a>
+          <a href="recruit.html" class="recruit-alert">RECRUIT</a>
           <a href="access.html">ACCESS</a>
           <a href="contact.html">CONTACT</a>
         </nav>
