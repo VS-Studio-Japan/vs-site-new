@@ -9,7 +9,7 @@
 
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
@@ -147,21 +147,231 @@
 
     main {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
+      display: block;
+      padding: 72px 24px 56px;
     }
 
-    .recruit-message {
-      max-width: 760px;
-      margin: 0 auto 40px;
-      font-size: 15px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.82);
+    .recruit-section {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.84);
+      letter-spacing: 0.06em;
+      line-height: 2;
+      text-align: left;
+    }
+
+    .page-title {
+      margin-bottom: 34px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: #fff;
+      text-align: center;
+    }
+
+    .recruit-lead {
+      margin-bottom: 52px;
+      padding: 28px 30px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.035);
+      font-size: 14px;
+      line-height: 2.1;
+    }
+
+    .job-title {
+      margin-bottom: 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.22);
+      font-size: 20px;
+      font-weight: 600;
       letter-spacing: 0.08em;
-      line-height: 2.05;
+      color: #fff;
+      line-height: 1.7;
+    }
+
+    .job-block {
+      margin-bottom: 36px;
+    }
+
+    .job-block h2 {
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+
+    .job-block p,
+    .job-block li {
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .job-block ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .job-block li {
+      position: relative;
+      padding-left: 1.2em;
+      margin-bottom: 8px;
+    }
+
+    .job-block li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: rgba(255,255,255,0.55);
+    }
+
+
+
+    .recruit-contact-section {
+      margin-top: 72px;
+      padding-top: 54px;
+      border-top: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .recruit-contact-title {
+      margin-bottom: 34px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: #fff;
+      text-align: center;
+    }
+
+    .recruit-contact-note {
+      max-width: 720px;
+      margin: 0 auto 34px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      line-height: 1.9;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.88);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      background: #000;
+      border: 1px solid #333;
+      color: #fff;
+      box-sizing: border-box;
+      outline: none;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: rgba(255,255,255,0.72);
+    }
+
+    .radio-group {
+      margin-top: 10px;
+    }
+
+    .radio-item {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+    }
+
+    .radio-item input {
+      margin-right: 12px;
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .radio-item label {
+      display: inline;
+      margin-bottom: 0;
+      font-weight: normal;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .contact-submit-button {
+      width: 100%;
+      padding: 15px;
+      background-color: #fff;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 2px;
+      margin-top: 20px;
+      font-size: 13px;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .contact-submit-button:hover {
+      background-color: #ccc;
+    }
+
+    .contact-submit-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #thanks_message {
+      display: none;
+      padding: 40px;
+      border: 1px solid #333;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    #thanks_message h2 {
+      margin-bottom: 24px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: #fff;
+    }
+
+    .home-button {
+      width: auto;
+      padding: 10px 40px;
+    }
+
+    .back-link-wrap {
+      margin-top: 56px;
+      text-align: center;
     }
 
     .back-link {
@@ -235,10 +445,28 @@
         font-size: 12px;
       }
 
-      .recruit-message {
-        font-size: 14px;
+      main {
+        padding: 58px 24px 48px;
+      }
+
+      .page-title {
+        font-size: 20px;
+      }
+
+      .recruit-lead {
+        padding: 24px 22px;
+        font-size: 13px;
         line-height: 2;
-        letter-spacing: 0.06em;
+      }
+
+      .job-title {
+        font-size: 18px;
+      }
+
+      .job-block p,
+      .job-block li {
+        font-size: 13px;
+        line-height: 1.95;
       }
     }
 
@@ -268,13 +496,39 @@
       }
 
       main {
-        padding: 48px 24px;
+        padding: 48px 22px;
       }
 
-      .recruit-message {
-        font-size: 13px;
-        line-height: 1.95;
+      .recruit-section {
         letter-spacing: 0.04em;
+      }
+
+      .page-title {
+        margin-bottom: 26px;
+        font-size: 18px;
+      }
+
+      .recruit-lead {
+        margin-bottom: 42px;
+        padding: 22px 18px;
+      }
+
+      .job-title {
+        font-size: 16px;
+      }
+
+      .recruit-contact-section {
+        margin-top: 56px;
+        padding-top: 42px;
+      }
+
+      .recruit-contact-title {
+        font-size: 18px;
+      }
+
+      .recruit-contact-note {
+        text-align: left;
+        font-size: 12px;
       }
     }
 
@@ -292,6 +546,8 @@
       }
     }
   </style>
+  <link rel="preconnect" href="https://challenges.cloudflare.com">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 
 <body>
@@ -328,14 +584,148 @@
   </header>
 
   <main>
-    <div>
-      <div class="recruit-message">
-        VS Studioでは、今後の採用開始に向けた準備を進めています。<br>
-        募集職種・応募方法につきましては、適切な時期に本ページにてご案内いたします。
+    <section class="recruit-section">
+      <h1 class="page-title">RECRUIT</h1>
+
+      <div class="recruit-lead">
+        VS Studioでは、正式な採用活動の本格開始に先立ち、今期予定していた主要な採用枠は充足いたしました。<br>
+        次回の新規募集は、2027年以降になる見通しです。<br><br>
+        つきましては、現在掲載している追加募集職種は、今後の開発体制強化において、専門領域に限定したものとなります。
       </div>
 
-      <a href="index.html" class="back-link">Back to Home</a>
-    </div>
+      <article class="job-detail">
+        <h2 class="job-title">アクションゲームプレイ・システムエンジニア</h2>
+
+        <section class="job-block">
+          <h2>職種概要</h2>
+          <p>
+            新規AAAタイトルにおいて、キャラクター同士のリアルタイムアクションを中核としたゲームプレイ品質を横断的に設計・実装するゲームエンジニアを募集します。<br>
+            本ポジションは、単なるゲームプレイ実装担当ではなく、長期的に遊ばれ続けるアクションゲームの根幹となる手触り、ゲーム的な魅力、ネットワーク親和性を、エンジニアリング面から担保する役割です。
+          </p>
+        </section>
+
+        <section class="job-block">
+          <h2>必須要件</h2>
+          <ul>
+            <li>C++を用いた実務レベルのゲーム開発経験を15年以上有すること。</li>
+            <li>ゲームデザイン、ゲームプレイシステム、キャラクター挙動、入力仕様、フレーム単位の調整、技術的制約などについて、デザイナー、アニメーター、エンジニア、QAと日本語で高度な議論ができること。</li>
+            <li>上記のような開発内容に関する深い議論を、日本語で流暢かつ正確に行ってきた実務経験を10年以上有すること。</li>
+            <li>少なくとも3本以上の競技性の高いリアルタイム対戦アクションタイトルにおいて、ゲームエンジニア、ゲームプレイプログラマー、ゲームシステムエンジニア、またはそれに準ずる役割としてクレジットされた経験を有すること。</li>
+            <li>ネットワーク対戦、リプレイ、入力記録、同期検証、再現性を重視した対戦システムに関する知識を有すること。</li>
+          </ul>
+        </section>
+
+        <section class="job-block">
+          <h2>歓迎する要件</h2>
+          <ul>
+            <li>家庭用ゲームにおける複数プラットフォームでの商業リリース経験。</li>
+            <li>Unreal Engineまたは内製エンジンを用いた、リアルタイムアクションゲームまたはリアルタイムアクション対戦ゲームの開発経験。</li>
+            <li>キャラクター固有処理と共通ゲームプレイ基盤を両立させるアーキテクチャ設計経験。</li>
+            <li>アニメーション、モーションキャプチャ、エフェクト、サウンド、カメラ演出とゲームプレイロジックを接続する実装経験。</li>
+            <li>大型IPの仕様、品質基準、ブランド上の制約を守りながら、新規ゲームメカニクスを実装した経験。</li>
+            <li>リードエンジニアまたはそれに準ずる役割での実務経験。</li>
+          </ul>
+        </section>
+
+        <section class="job-block">
+          <h2>主な業務内容</h2>
+          <ul>
+            <li>新規AAAタイトルにおける、リアルタイムアクションゲームまたはリアルタイムアクション対戦の設計・実装。</li>
+            <li>キャラクターステート、アクションデータ、各種判定、硬直、派生、連続アクション補正などの設計・実装。</li>
+            <li>入力バッファ、先行入力、コマンド認識、入力遅延の計測・改善。</li>
+            <li>アニメーション、モーション、演出、接触判定とゲームプレイロジックの同期設計。</li>
+            <li>大量のキャラクターおよびアクションデータを扱うためのデータ構造、エディタ、検証ツールの開発。</li>
+            <li>オンライン対戦を前提とした再現性、同期性、リプレイ性、フレーム安定性の担保。</li>
+            <li>ゲームデザイナー、アニメーター、QA、エンジニアと連携した挙動調整、レビュー、技術課題の優先順位付け。</li>
+          </ul>
+        </section>
+
+        <section class="job-block">
+          <h2>求める人物像</h2>
+          <ul>
+            <li>競技性の高いアクションゲームの「面白さ」を感覚論に留めず、具体的な仕様や実装へ落とし込める方。</li>
+            <li>ゲームデザイナーの意図を尊重しつつ、破綻しない実装構造へ変換できる方。</li>
+            <li>ゲーム的な魅力、長期運用、バランス調整コストを考慮した設計判断ができる方。</li>
+            <li>自ら高度な実装を担えるだけでなく、チーム全体の実装品質と判断速度を引き上げられる方。</li>
+          </ul>
+        </section>
+      </article>
+
+
+      <section class="recruit-contact-section" aria-label="Recruit contact form">
+        <h2 class="recruit-contact-title">CONTACT</h2>
+        <p class="recruit-contact-note">
+          本職種へのご応募・お問い合わせは、以下のフォームよりお願いいたします。<br>
+          お問い合わせ種別は「採用に関するお問い合わせ」をご選択ください。
+        </p>
+
+        <div class="contact-container">
+          <div id="form_area">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfuJUB7o3YCQ8xGPWTnYHeCKBsPD0TIBGf7zneo7eDyye-wqg/formResponse" method="POST" target="hidden_iframe" onsubmit="return handleContactSubmit();">
+              <div class="form-group">
+                <label>お名前 *</label>
+                <input type="text" name="entry.1207021558" required>
+              </div>
+
+              <div class="form-group">
+                <label>メールアドレス *</label>
+                <input type="email" name="entry.1665471310" required>
+              </div>
+
+              <div class="form-group">
+                <label>お問い合わせ種別 *</label>
+                <div class="radio-group">
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="採用に関するお問い合わせ" id="t1" required>
+                    <label for="t1">採用に関するお問い合わせ</label>
+                  </div>
+
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="取材に関するお問い合わせ" id="t2">
+                    <label for="t2">取材に関するお問い合わせ</label>
+                  </div>
+
+                  <div class="radio-item">
+                    <input type="radio" name="entry.267130849" value="その他" id="t3">
+                    <label for="t3">その他</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>お問い合わせ内容 *</label>
+                <textarea name="entry.1661004559" rows="5" required></textarea>
+              </div>
+
+              <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAADMqOJK21AWBxxqR"
+                data-action="contact"
+                data-callback="turnstileSuccess"
+                data-expired-callback="turnstileExpired"
+                data-error-callback="turnstileExpired">
+              </div>
+
+              <p id="turnstile-error" style="display:none; color:#ff6b6b; font-size:12px; text-align:center; margin:10px 0 0;">
+                人間確認が完了していません。しばらく待ってから、もう一度お試しください。
+              </p>
+
+              <button type="submit" id="submit-button" class="contact-submit-button" disabled>送信する</button>
+            </form>
+          </div>
+
+          <div id="thanks_message">
+            <h2>THANK YOU</h2>
+            <p>お問い合わせを受け付けました。</p>
+            <button class="contact-submit-button home-button" onclick="window.location.href='index.html';">BACK TO HOME</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="back-link-wrap">
+        <a href="index.html" class="back-link">Back to Home</a>
+      </div>
+    </section>
   </main>
 
   <footer>© 2026 VS STUDIO</footer>
@@ -351,7 +741,53 @@
     document.addEventListener('click', () => {
       langMenu.classList.remove('active');
     });
+
+
+    var submitted = false;
+    var turnstileVerified = false;
+
+    function turnstileSuccess() {
+      turnstileVerified = true;
+
+      var submitButton = document.getElementById('submit-button');
+      var errorMessage = document.getElementById('turnstile-error');
+
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+
+      if (errorMessage) {
+        errorMessage.style.display = 'none';
+      }
+    }
+
+    function turnstileExpired() {
+      turnstileVerified = false;
+
+      var submitButton = document.getElementById('submit-button');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+    }
+
+    function handleContactSubmit() {
+      if (!turnstileVerified) {
+        var errorMessage = document.getElementById('turnstile-error');
+
+        if (errorMessage) {
+          errorMessage.style.display = 'block';
+        }
+
+        return false;
+      }
+
+      submitted = true;
+      return true;
+    }
   </script>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){document.getElementById('form_area').style.display='none'; document.getElementById('thanks_message').style.display='block';}"></iframe>
 
 </body>
 </html>
